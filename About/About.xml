@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>WallStuff</name>
+	<author>Arcjc007</author>
+	 <supportedVersions><li>1.0</li></supportedVersions>
+	<description><![CDATA[Adds Wall Mountable Items To The Game,
+	Items Included:
+	Wall Mounted Heater (Same stats as default heater)
+	Wall Mounted Cooler (Slightly less powerful vs the standard cooler to offset the lack of need for venting)
+	Wall Mounted Flatscreen Television (Same stats as default flatscreen)
+	Wall Mounted Replicator (1000W power usage can spawn a specific item(s) once a day, available items can be switched with a button for each replicator (this resets the timer) the list of available items is configurable in the Mod Settings (With thanks to the QuarryMod where I stole most of the saving code from)
+  
+  Power levels of the heater and cooler are also configurable in the mod settings.
+	]]>
+	</description>
+</ModMetaData>
