@@ -3,10 +3,10 @@
 	<name>WallStuff</name>
 	<author>Arcjc007</author>
 	<packageId>Arcjc007.WallStuff</packageId>
-	<supportedGameVersions>
+	<supportedVersions>
 		<li>1.0</li>
 		<li>1.1</li>
-	</supportedGameVersions>
+	</supportedVersions>
 	<description><![CDATA[Adds Wall Mountable Items To The Game,
 	Items Included:
 	Wall Mounted Heater (Same stats as default heater)

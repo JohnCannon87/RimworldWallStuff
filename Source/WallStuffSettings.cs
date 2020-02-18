@@ -10,14 +10,16 @@ namespace WallStuff
     class WallStuffSettings : ModSettings
     {
         internal static List<ThingCountExposable> listOfSpawnableThings = null;
-        internal static float heaterPower = 21f;
-        internal static float coolerPower = -15f;
+        internal static float heaterPower;
+        internal static float coolerPower;
 
         public override void ExposeData()
         {
             base.ExposeData();
-            
+
             Scribe_Collections.Look(ref listOfSpawnableThings, "listOfSpawnableThings");
+            Scribe_Values.Look(ref heaterPower, "heaterPower");
+            Scribe_Values.Look(ref coolerPower, "coolerPower");
 
             // Remove all null entries in the oreDictionary
             // This is most likely due to removing a mod, which will trigger a game reset
@@ -37,6 +39,14 @@ namespace WallStuff
                     }
                 }
                 listOfSpawnableThings = dict;
+                if (heaterPower == 0f)
+                {
+                    heaterPower = 21f;
+                }
+                if (coolerPower == 0f)
+                {
+                    coolerPower = -15f;
+                }
             }
         }
     }
