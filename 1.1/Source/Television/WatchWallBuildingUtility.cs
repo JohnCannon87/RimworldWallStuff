@@ -12,34 +12,53 @@ namespace WallStuff
     {
         private static List<int> allowedDirections = new List<int>();
 
+        public static IntVec3 GetAdjustedCenter(Thing t)
+        {
+            return t.Position + IntVec3.North.RotatedBy(t.Rotation);
+        }
+
+        private static CellRect GetCellRect(Thing t)
+        {
+            return GenAdj.OccupiedRect(GetAdjustedCenter(t), t.Rotation, t.def.size);
+        }
+
         public static bool CanWatchWallFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
-            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true))
+            Log.Warning("Pawn attempting to watch: " + pawn.Name);
+            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.Rotation))
             {
+                Log.Warning(pawn.Name + " Cannot watch from bed !");
                 return false;
             }
             if (toWatch.def.rotatable)
             {
+                Log.Warning(pawn.Name + " Thing is rotatable");
                 Rot4 rotation = bed.Rotation;
-                CellRect cellRect = toWatch.OccupiedRect();
+                CellRect cellRect = GetCellRect(toWatch);
                 if (rotation == Rot4.North && cellRect.maxZ < pawn.Position.z)
                 {
+                    Log.Warning(pawn.Name + " Not above tv !");
                     return false;
                 }
                 if (rotation == Rot4.South && cellRect.minZ > pawn.Position.z)
                 {
+                    Log.Warning(pawn.Name + " Not below tv !");
                     return false;
                 }
                 if (rotation == Rot4.East && cellRect.maxX < pawn.Position.x)
                 {
+                    Log.Warning(pawn.Name + " Not east of tv !");
                     return false;
                 }
                 if (rotation == Rot4.West && cellRect.minX > pawn.Position.x)
                 {
+                    Log.Warning(pawn.Name + " Not west of tv !");
                     return false;
                 }
             }
+            Log.Warning(pawn.Name + " Calculating allowed directions");
             List<int> list = CalculateAllowedDirections(toWatch.def, toWatch.Rotation);
+            Log.Warning(pawn.Name + " Found this many directions " + list.Count);
             for (int i = 0; i < list.Count; i++)
             {
                 if (GetWatchCellRect(toWatch.def, toWatch.Position, toWatch.Rotation, list[i]).Contains(pawn.Position))
@@ -67,7 +86,7 @@ namespace WallStuff
                     {
                         bool flag = false;
                         Building building = null;
-                        if (EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, false) && !intVec2.IsForbidden(pawn) && pawn.CanReserve(intVec2, 1, -1, null, false) && pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn, false))
+                        if (EverPossibleToWatchFrom(intVec2, toWatch.Position, toWatch.Map, false, toWatch.Rotation) && !intVec2.IsForbidden(pawn) && pawn.CanReserve(intVec2, 1, -1, null, false) && pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn, false))
                         {
                             if (desireSit)
                             {
@@ -115,14 +134,14 @@ namespace WallStuff
 
         public static bool CanWatchFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
-            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true))
+            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.Rotation))
             {
                 return false;
             }
             if (toWatch.def.rotatable)
             {
                 Rot4 rotation = bed.Rotation;
-                CellRect cellRect = toWatch.OccupiedRect();
+                CellRect cellRect = GetCellRect(toWatch);
                 if (rotation == Rot4.North && cellRect.maxZ < pawn.Position.z)
                 {
                     return false;
@@ -152,8 +171,9 @@ namespace WallStuff
             return false;
         }
 
-        private static bool EverPossibleToWatchFrom(IntVec3 watchCell, IntVec3 buildingCenter, Map map, bool bedAllowed)
+        private static bool EverPossibleToWatchFrom(IntVec3 watchCell, IntVec3 buildingCenterWall, Map map, bool bedAllowed, Rot4 rot)
         {
+            IntVec3 buildingCenter = buildingCenterWall + IntVec3.North.RotatedBy(rot);
             return (watchCell.Standable(map) || (bedAllowed && watchCell.GetEdifice(map) is Building_Bed)) && GenSight.LineOfSight(buildingCenter, watchCell, map, true, null, 0, 0);
         }
 
@@ -174,8 +194,9 @@ namespace WallStuff
             return allowedDirections;
         }
 
-        private static CellRect GetWatchCellRect(ThingDef def, IntVec3 center, Rot4 rot, int watchRot)
+        private static CellRect GetWatchCellRect(ThingDef def, IntVec3 wallCenter, Rot4 rot, int watchRot)
         {
+            IntVec3 center = wallCenter + IntVec3.North.RotatedBy(rot);
             Rot4 a = new Rot4(watchRot);
             if (def.building == null)
             {
