@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>Replicator</defName>
-        <thingClass>Building</thingClass>
         <label>replicator</label>
         <description>A small wall mounted replicator unit.</description>
         <graphicData>

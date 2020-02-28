@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>WallHeater</defName>
         <thingClass>WallStuff.Building_MediumHeater</thingClass>
         <label>wall heater</label>
@@ -10,7 +10,7 @@
             <texPath>WallHeater/WallHeater</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-		<uiIconPath>WallHeater/WallHeater_south</uiIconPath>
+        <uiIconPath>WallHeater/WallHeater_south</uiIconPath>
         <costList>
             <Steel>50</Steel>
             <ComponentIndustrial>1</ComponentIndustrial>
@@ -29,12 +29,12 @@
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>175</basePowerConsumption>
             </li>
-			<li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Flickable"/>
             <li Class="CompProperties_TempControl">
-				<compClass>CompTempControl</compClass>
+                <compClass>CompTempControl</compClass>
                 <energyPerSecond>40</energyPerSecond>
             </li>
-			<li Class="CompProperties_Breakdownable"/>
+            <li Class="CompProperties_Breakdownable"/>
         </comps>
         <placeWorkers>
             <li>WallStuff.PlaceWorker_MediumHeater</li>
@@ -53,7 +53,7 @@
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     </ThingDef>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>WallCooler</defName>
         <thingClass>WallStuff.Building_MediumCooler</thingClass>
         <label>wall cooler</label>
@@ -62,7 +62,7 @@
             <texPath>WallCooler/WallCooler</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-		<uiIconPath>WallCooler/WallCooler_south</uiIconPath>
+        <uiIconPath>WallCooler/WallCooler_south</uiIconPath>
         <costList>
             <Steel>90</Steel>
             <ComponentIndustrial>3</ComponentIndustrial>
@@ -80,12 +80,12 @@
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>200</basePowerConsumption>
             </li>
-			<li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Flickable"/>
             <li Class="CompProperties_TempControl">
-				<compClass>CompTempControl</compClass>
+                <compClass>CompTempControl</compClass>
                 <energyPerSecond>-40</energyPerSecond>
             </li>
-			<li Class="CompProperties_Breakdownable"/>
+            <li Class="CompProperties_Breakdownable"/>
         </comps>
         <placeWorkers>
             <li>WallStuff.PlaceWorker_MediumCooler</li>
@@ -166,5 +166,57 @@
         <useHitPoints>false</useHitPoints>
     </ThingDef>
 
-</Defs>
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>Vent</defName>
+        <label>vent</label>
+        <thingClass>WallStuff.Wall_Building_Vent</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Misc/TempControl/VentB</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <altitudeLayer>PawnUnused</altitudeLayer>
+        <passability>Impassable</passability>
+        <fillPercent>0.99</fillPercent>
+        <coversFloor>true</coversFloor>
+        <blockLight>true</blockLight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>1.0</staticSunShadowHeight>
+        <comps>
+            <li Class="CompProperties_Flickable">
+                <commandTexture>UI/Commands/Vent</commandTexture>
+                <commandLabelKey>CommandDesignateOpenCloseVentLabel</commandLabelKey>
+                <commandDescKey>CommandDesignateOpenCloseVentDesc</commandDescKey>
+            </li>
+        </comps>
+        <statBases>
+            <WorkToBuild>400</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <tickerType>Rare</tickerType>
+        <description>A simple vent for equalizing the temperature between two rooms without allowing people to walk between them.</description>
+        <costList>
+            <Steel>30</Steel>
+        </costList>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <placeWorkers>
+            <li>PlaceWorker_Vent</li>
+            <li>WallStuff.PlaceWorker_WallObject</li>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+        </placeWorkers>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <building>
+            <canPlaceOverWall>true</canPlaceOverWall>
+            <isEdifice>false</isEdifice>
+        </building>
+        <designationCategory>Temperature</designationCategory>
+        <designationHotKey>Misc4</designationHotKey>
+    </ThingDef>
 
+</Defs>
