@@ -171,7 +171,7 @@
         <label>vent</label>
         <thingClass>WallStuff.Wall_Building_Vent</thingClass>
         <graphicData>
-            <texPath>Things/Building/Misc/TempControl/VentB</texPath>
+            <texPath>WallVent/WallVent</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
             <damageData>
                 <cornerTL>Damage/Corner</cornerTL>
