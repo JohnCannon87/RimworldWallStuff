@@ -30,9 +30,8 @@
         </statBases>
         <comps>
             <li Class="CompProperties_Power">
-                <compClass>CompPowerPlant</compClass>
+                <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>1000</basePowerConsumption>
-                <transmitsPower>true</transmitsPower>
             </li>
             <li Class="CompProperties_Breakdownable"/>
             <li Class="CompProperties_Flickable"/>
