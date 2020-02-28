@@ -167,8 +167,8 @@
     </ThingDef>
 
     <ThingDef ParentName="WallBuildingBase">
-        <defName>Vent</defName>
-        <label>vent</label>
+        <defName>WallVent</defName>
+        <label>in wall vent</label>
         <thingClass>WallStuff.Wall_Building_Vent</thingClass>
         <graphicData>
             <texPath>WallVent/WallVent</texPath>
