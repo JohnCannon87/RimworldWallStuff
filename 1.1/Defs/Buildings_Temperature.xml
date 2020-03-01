@@ -180,7 +180,7 @@
                 <cornerBR>Damage/Corner</cornerBR>
             </damageData>
         </graphicData>
-        <altitudeLayer>PawnUnused</altitudeLayer>
+        <altitudeLayer>BuildingOnTop</altitudeLayer>
         <passability>Impassable</passability>
         <fillPercent>0.99</fillPercent>
         <coversFloor>true</coversFloor>
@@ -216,6 +216,7 @@
             <isEdifice>false</isEdifice>
         </building>
         <designationCategory>Temperature</designationCategory>
+        <clearBuildingArea>false</clearBuildingArea>
         <designationHotKey>Misc4</designationHotKey>
     </ThingDef>
 
