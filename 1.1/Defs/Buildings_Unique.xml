@@ -37,11 +37,6 @@
             <li Class="CompProperties_Flickable"/>
             <li Class="WallStuff.WallMountedCompProperties_Spawner">
                 <requiresPower>true</requiresPower>
-                <thingToSpawn>MealLavish</thingToSpawn>
-                <spawnIntervalRange>
-                    <min>60000</min>
-                    <max>60000</max>
-                </spawnIntervalRange>
                 <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
                 <showMessageIfOwned>true</showMessageIfOwned>
             </li>

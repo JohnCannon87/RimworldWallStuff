@@ -13,6 +13,7 @@ namespace WallStuff
     {
         private int ticksUntilSpawn;
         private int thingToSpawnIndex = 0;
+        private int ticksToSpawn = 60000;
         private Boolean spawned = false;
         private ThingCountExposable thingToSpawn;
 
@@ -179,6 +180,28 @@ namespace WallStuff
                 yield return act;
             }
 
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.IncrementSpawnTimer(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/IncField", true);
+                act.defaultLabel = "Increment Replication Timer - Currently " + getTimeToSpawnInHours();
+                act.defaultDesc = "" + getTimeToSpawnInHours();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.DecrementFieldRadius(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/IncField", true);
+                act.defaultLabel = "Decrement Replication Timer - Currently " + getTimeToSpawnInHours();
+                act.defaultDesc = "" + getTimeToSpawnInHours();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
             if (Prefs.DevMode && this.thingToSpawn != null)
             {
                 yield return new Command_Action
@@ -203,7 +226,9 @@ namespace WallStuff
 
         private void ResetCountdown()
         {
-            this.ticksUntilSpawn = this.WallMountedPropsSpawner.spawnIntervalRange.RandomInRange;
+            IntRange spawnIntervalRange = new IntRange(ticksToSpawn, ticksToSpawn);
+
+            this.ticksUntilSpawn = spawnIntervalRange.RandomInRange;
         }
 
         public override void PostExposeData()
@@ -221,6 +246,35 @@ namespace WallStuff
                 return "NextSpawnedItemIn".Translate(GenLabel.ThingLabel(this.thingToSpawn.thingDef, null, this.thingToSpawn.count)) + ": " + this.ticksUntilSpawn.ToStringTicksToPeriod();
             }
             return null;
+        }
+
+        private void IncrementSpawnTimer(Command_Action act)
+        {
+            ticksToSpawn = ticksToSpawn + 2500;
+            if (ticksToSpawn > 420000)
+            {
+                ticksToSpawn = 420000;// 60,000 ticks in a day, this is one week
+            }
+            act.defaultDesc = "" + getTimeToSpawnInHours();
+            act.defaultLabel = "Increment Replication Timer - Currently " + getTimeToSpawnInHours();
+            ResetCountdown();
+        }
+
+        private void DecrementFieldRadius(Command_Action act)
+        {
+            ticksToSpawn = ticksToSpawn - 2500;
+            if (ticksToSpawn < 2500)
+            {
+                ticksToSpawn = 2500;
+            }
+            act.defaultDesc = "" + getTimeToSpawnInHours();
+            act.defaultLabel = "Decrement Replication Timer - Currently " + getTimeToSpawnInHours();
+            ResetCountdown();
+        }
+
+        private String getTimeToSpawnInHours()
+        {
+            return (ticksToSpawn / 2500) + " Hours";
         }
     }
 }
