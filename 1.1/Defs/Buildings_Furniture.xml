@@ -43,10 +43,10 @@
             <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
             <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
             <watchBuildingStandDistanceRange>
-                <min>1</min>
-                <max>3</max>
+                <min>2</min>
+                <max>6</max>
             </watchBuildingStandDistanceRange>
-            <watchBuildingStandRectWidth>4</watchBuildingStandRectWidth>
+            <watchBuildingStandRectWidth>6</watchBuildingStandRectWidth>
         </building>
         <placeWorkers>
             <li>WallStuff.PlaceWorker_WallMountedWatchArea</li>

@@ -153,7 +153,7 @@ namespace WallStuff
 
                 foreach (var tc in dict.Select((value, index) => new { index, value }))
                 {
-                    Rect entryRect = new Rect(0f, num, viewRect.width, 32);
+                    Rect entryRect = new Rect(0f, num, viewRect.width, 32);                    
                     Rect iconRect = entryRect.LeftPartPixels(32);
                     Rect labelRect = new Rect(entryRect.LeftThird().x + 33f, entryRect.y, entryRect.LeftThird().width - 33f, entryRect.height);
                     Rect pctRect = new Rect(entryRect.LeftHalf().RightPartPixels(41).x, entryRect.y, 40f, entryRect.height);
@@ -161,7 +161,7 @@ namespace WallStuff
 
 
                     Widgets.ThingIcon(iconRect, tc.value.thingDef);
-                    Widgets.Label(labelRect, tc.value.thingDef.LabelCap);
+                    Widgets.Label(labelRect, tc.value.thingDef.LabelCap + " - BMV - " + tc.value.thingDef.BaseMarketValue);
                     Widgets.Label(pctRect, $"{WallStuffSettings.listOfSpawnableThings[tc.index].count}");
                     int val = tc.value.count;
                     val = Widgets.HorizontalSlider(
