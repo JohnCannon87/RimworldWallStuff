@@ -15,14 +15,17 @@
             <Steel>50</Steel>
             <ComponentIndustrial>1</ComponentIndustrial>
         </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
         <building>
             <isEdifice>false</isEdifice>
         </building>
         <statBases>
             <WorkToBuild>1500</WorkToBuild>
             <MaxHitPoints>100</MaxHitPoints>
-            <Mass>6</Mass>
             <Flammability>0.5</Flammability>
+            <Mass>6</Mass>
         </statBases>
         <comps>
             <li Class="CompProperties_Power">
@@ -46,6 +49,7 @@
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <minifiedDef>MinifiedThing</minifiedDef>
         <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
@@ -67,6 +71,9 @@
             <Steel>90</Steel>
             <ComponentIndustrial>3</ComponentIndustrial>
         </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
         <building>
             <isEdifice>false</isEdifice>
         </building>
@@ -74,6 +81,7 @@
             <WorkToBuild>2000</WorkToBuild>
             <MaxHitPoints>100</MaxHitPoints>
             <Flammability>0.7</Flammability>
+            <Mass>6</Mass>
         </statBases>
         <comps>
             <li Class="CompProperties_Power">
@@ -97,6 +105,7 @@
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <minifiedDef>MinifiedThing</minifiedDef>
         <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>

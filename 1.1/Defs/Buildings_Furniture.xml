@@ -43,8 +43,8 @@
             <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
             <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
             <watchBuildingStandDistanceRange>
-                <min>2</min>
-                <max>6</max>
+                <min>1</min>
+                <max>5</max>
             </watchBuildingStandDistanceRange>
             <watchBuildingStandRectWidth>6</watchBuildingStandRectWidth>
         </building>
