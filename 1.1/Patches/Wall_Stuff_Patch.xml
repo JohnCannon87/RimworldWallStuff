@@ -13,6 +13,7 @@
 				<xpath>Defs/JoyGiverDef[defName="WatchTelevision"]/thingDefs</xpath>
 				<value>
 					<li>WallscreenTelevision</li>
+					<li>SmallWallscreenTelevision</li>
 				</value>
 			</li>
 		</operations>
