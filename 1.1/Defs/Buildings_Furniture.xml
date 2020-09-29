@@ -71,5 +71,74 @@
         </researchPrerequisites>
     </ThingDef>
 
-</Defs>
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>SmallWallscreenTelevision</defName>
+        <thingClass>WallStuff.WallThingBase</thingClass>
+        <label>small wallscreen television</label>
+        <description>A small, high-tech television. Tiny, hyper-vibrant images almost leap out of the screen. Very entertaining. Picks up transmissions from ancient satellites and ubiquitous data cards. Wall Mounted, nice.</description>
+        <graphicData>
+            <texPath>WallScreen/WallScreen</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shadowData>
+                <volume>(2.5, 0.6, 0.1)</volume>
+                <offset>(0, 0, 0.2)</offset>
+            </shadowData>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <altitudeLayer>PawnUnused</altitudeLayer>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <rotatable>true</rotatable>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <socialPropernessMatters>true</socialPropernessMatters>
+        <fillPercent>0.35</fillPercent>
+        <defaultPlacingRot>South</defaultPlacingRot>
+        <thingCategories>
+            <li>BuildingsJoy</li>
+        </thingCategories>
+        <costList>
+            <Steel>100</Steel>
+            <ComponentIndustrial>8</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToBuild>45000</WorkToBuild>
+            <MaxHitPoints>80</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <Mass>8</Mass>
+            <JoyGainFactor>1.4</JoyGainFactor>
+        </statBases>
+        <size>(1,1)</size>
+        <building>
+            <isEdifice>false</isEdifice>
+            <joyKind>Television</joyKind>
+            <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
+            <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
+            <watchBuildingStandDistanceRange>
+                <min>1</min>
+                <max>3</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>3</watchBuildingStandRectWidth>
+        </building>
+        <placeWorkers>
+            <li>WallStuff.PlaceWorker_WallMountedWatchArea</li>
+            <li>WallStuff.PlaceWorker_WallObject</li>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+        </placeWorkers>
+        <designationCategory>Joy</designationCategory>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <shortCircuitInRain>true</shortCircuitInRain>
+                <basePowerConsumption>150</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable"/>
+        </comps>
+        <clearBuildingArea>false</clearBuildingArea>
+        <tradeTags>
+            <li>Television</li>
+        </tradeTags>
+        <researchPrerequisites>
+            <li>WallStuff</li>
+        </researchPrerequisites>
+    </ThingDef>
 
+</Defs>

@@ -46,6 +46,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.0.2\lib\net35\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -77,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Replicator\WallMountedCompProperties_Spawner.cs" />
@@ -94,6 +99,9 @@
     <Compile Include="Television\WatchWallBuildingUtility.cs" />
     <Compile Include="Temperature\Wall_Building_Vent.cs" />
     <Compile Include="ThingCountExposable.cs" />
+    <Compile Include="Trade\PlaceWorker_ShowWallMountedTradeBeaconRadius.cs" />
+    <Compile Include="Trade\WallMountedTradeUtility.cs" />
+    <Compile Include="Trade\WallTradeBeacon.cs" />
     <Compile Include="WallStuffMod.cs" />
     <Compile Include="WallStuffSettings.cs" />
     <Compile Include="WallStuff\IWallAttachable.cs" />
@@ -119,7 +127,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
