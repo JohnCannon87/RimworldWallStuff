@@ -16,6 +16,10 @@ namespace WallStuff
         private int ticksToSpawn = 60000;
         private Boolean spawned = false;
         private ThingCountExposable thingToSpawn;
+        private const int ONE_HOUR_TICKS = 2500;
+        private const int ONE_DAY_TICKS = 60000;
+        private const int MAX_SPAWN_TIME = ONE_DAY_TICKS * 120;
+        private const int MIN_SPAWN_TIME = ONE_HOUR_TICKS;
 
         WallMountedCompProperties_Spawner WallMountedPropsSpawner
         {
@@ -183,10 +187,10 @@ namespace WallStuff
             if (spawned)
             {
                 Command_Action act = new Command_Action();
-                act.action = () => this.IncrementSpawnTimer(act);
+                act.action = () => this.IncrementSpawnTimerByAnHour(act);
                 act.icon = ContentFinder<Texture2D>.Get("UI/IncField", true);
-                act.defaultLabel = "Increment Replication Timer - Currently " + getTimeToSpawnInHours();
-                act.defaultDesc = "" + getTimeToSpawnInHours();
+                act.defaultLabel = "Plus 1 Hour - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
                 act.activateSound = SoundDef.Named("Click");
                 yield return act;
             }
@@ -194,10 +198,32 @@ namespace WallStuff
             if (spawned)
             {
                 Command_Action act = new Command_Action();
-                act.action = () => this.DecrementFieldRadius(act);
-                act.icon = ContentFinder<Texture2D>.Get("UI/IncField", true);
-                act.defaultLabel = "Decrement Replication Timer - Currently " + getTimeToSpawnInHours();
-                act.defaultDesc = "" + getTimeToSpawnInHours();
+                act.action = () => this.DecrementSpawnTimerByAnHour(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/DecField", true);
+                act.defaultLabel = "Minus 1 Hour - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.IncrementSpawnTimerByADay(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/IncFieldDay", true);
+                act.defaultLabel = "Plus 1 Day - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.DecrementSpawnTimerByADay(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/DecFieldDay", true);
+                act.defaultLabel = "Minus 1 Day - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
                 act.activateSound = SoundDef.Named("Click");
                 yield return act;
             }
@@ -248,33 +274,55 @@ namespace WallStuff
             return null;
         }
 
-        private void IncrementSpawnTimer(Command_Action act)
+        private void IncrementSpawnTimerByAnHour(Command_Action act)
         {
-            ticksToSpawn = ticksToSpawn + 2500;
-            if (ticksToSpawn > 420000)
+            IncrementSpawnTimer(act, ONE_HOUR_TICKS);
+        }
+
+        private void DecrementSpawnTimerByAnHour(Command_Action act)
+        {
+            DecrementSpawnTimer(act, ONE_HOUR_TICKS);
+        }
+        private void IncrementSpawnTimerByADay(Command_Action act)
+        {
+            IncrementSpawnTimer(act, ONE_DAY_TICKS);
+        }
+
+        private void DecrementSpawnTimerByADay(Command_Action act)
+        {
+            DecrementSpawnTimer(act, ONE_DAY_TICKS);
+        }
+
+        private void IncrementSpawnTimer(Command_Action act, int ticks)
+        {
+            ticksToSpawn += ticks;
+            if (ticksToSpawn > MAX_SPAWN_TIME)
             {
-                ticksToSpawn = 420000;// 60,000 ticks in a day, this is one week
+                ticksToSpawn = MAX_SPAWN_TIME;
             }
-            act.defaultDesc = "" + getTimeToSpawnInHours();
-            act.defaultLabel = "Increment Replication Timer - Currently " + getTimeToSpawnInHours();
             ResetCountdown();
         }
 
-        private void DecrementFieldRadius(Command_Action act)
+        private void DecrementSpawnTimer(Command_Action act, int ticks)
         {
-            ticksToSpawn = ticksToSpawn - 2500;
-            if (ticksToSpawn < 2500)
+            ticksToSpawn -= ticks;
+            if (ticksToSpawn < MIN_SPAWN_TIME)
             {
-                ticksToSpawn = 2500;
+                ticksToSpawn = MIN_SPAWN_TIME;
             }
-            act.defaultDesc = "" + getTimeToSpawnInHours();
-            act.defaultLabel = "Decrement Replication Timer - Currently " + getTimeToSpawnInHours();
             ResetCountdown();
         }
 
-        private String getTimeToSpawnInHours()
+        private String getTimeToSpawn()
         {
-            return (ticksToSpawn / 2500) + " Hours";
+            int daysTillSpawn = ticksToSpawn / ONE_DAY_TICKS;
+
+            if(daysTillSpawn < 3)
+            {
+                return (ticksToSpawn / ONE_HOUR_TICKS) + " Hours";
+            }
+
+            return daysTillSpawn + " Days";
         }
     }
 }

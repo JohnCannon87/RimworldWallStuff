@@ -28,6 +28,7 @@
             <Mass>35</Mass>
             <MarketValue>3000</MarketValue>
         </statBases>
+        <tickerType>Rare</tickerType>
         <comps>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
@@ -50,7 +51,6 @@
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <altitudeLayer>PawnUnused</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
-        <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>MatterToEnergyConversion</li>
         </researchPrerequisites>
@@ -59,4 +59,3 @@
     </ThingDef>
 
 </Defs>
-
