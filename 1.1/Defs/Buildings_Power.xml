@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>WallMountedBattery</defName>
+    <label>in wall battery</label>
+    <description>Stores electricity for later use. Charged batteries explode when exposed to rain or fire.</description>
+    <thingClass>WallStuff.WallMounted_Battery</thingClass>
+    <graphicData>
+      <texPath>WallBat/WallBat</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>PawnUnused</altitudeLayer>
+    <fillPercent>0.99</fillPercent>
+    <tickerType>Normal</tickerType>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Battery">
+        <storedEnergyMax>400</storedEnergyMax>
+        <efficiency>0.8</efficiency>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <clearBuildingArea>false</clearBuildingArea>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>Batteries</li>
+      <li>WallStuff</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>
