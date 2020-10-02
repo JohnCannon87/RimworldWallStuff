@@ -38,7 +38,7 @@
     </building>
     <costList>
       <Steel>100</Steel>
-      <ComponentIndustrial>1</ComponentIndustrial>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Battery">
