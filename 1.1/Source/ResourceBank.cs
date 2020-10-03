@@ -11,6 +11,7 @@ namespace WallStuff
     {
         public const string modName = "WallStuff";
         public static string NeedsWall = "Can only be placed on a wall";
-        public static string WallAlreadyOccupied = "Space Already Occupied";
+        public static string WallAlreadyOccupied = "Space already occupied";
+        public static string SpaceInFrontOfWallNotClear = "Space infront of wall not clear";
     }
 }

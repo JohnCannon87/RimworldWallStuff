@@ -10,7 +10,15 @@ namespace WallStuff
             var things = map.thingGrid.ThingsListAt( center );
             if (things.Exists( s => s is IWallAttachable ))
             {
-                return ResourceBank.WallAlreadyOccupied;
+                if(things.Exists( s => s.Rotation.Equals(rot)))
+                {                    
+                    return ResourceBank.WallAlreadyOccupied;
+                }                
+            }
+            IntVec3 facingCell = center + rot.FacingCell;
+            if ((!GenGrid.InBounds(facingCell, map) || GenGrid.Impassable(facingCell, map)))
+            {
+                return ResourceBank.SpaceInFrontOfWallNotClear;
             }
             return true;
         }

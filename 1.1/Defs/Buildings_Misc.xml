@@ -60,7 +60,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="WallBuildingBase">
     <defName>WallMountedCommsConsole</defName>
     <label>wall mounted comms console</label>
     <description>Allows radio contact with other factions and orbital traders, now wall mounted for your convenience !</description>

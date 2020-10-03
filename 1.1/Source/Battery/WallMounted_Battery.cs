@@ -10,7 +10,7 @@ using Verse.Sound;
 namespace WallStuff
 {
 	[StaticConstructorOnStartup]
-	public class WallMounted_Battery : Building
+	public class WallMounted_Battery : WallThingBase
     {
 
 		private static readonly Vector2 BarSize = new Vector2(0.3f, 0.6f);
