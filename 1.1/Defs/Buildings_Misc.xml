@@ -10,14 +10,8 @@
       <texPath>WallToolBoard/WallToolBoard</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(2,1)</drawSize>
-      <color>(96,114,95)</color>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
     </graphicData>
+    <uiIconPath>WallToolBoard/WallToolBoard_south</uiIconPath>
 
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
