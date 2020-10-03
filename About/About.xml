@@ -20,6 +20,7 @@
 	Wall Mounted Trade Beacon (Works same as the vanilla version)
 	Wall Mounted Comms Console (Works same as the vanilla version)
 	Wall Mounted Battery (1 cell, holds less power than normal battery but more efficient for slightly more steel cost)
+	Wall Mounted Tool Board (2 cells, does the same job as a vanilla Tool Cabinet, stuffable to can be made from Wood, Plasteel etc.)
 	
 	If the RT Fuse mod (https://steamcommunity.com/sharedfiles/filedetails/?id=728314182) is present:
 	Wall Mounted Circuit breaker (1 cell, designed to handle 3 of the wall mounted batteries so slightly less powerful than the default 2 cell version from RT Fuse)
@@ -27,4 +28,7 @@
   Power levels of the heater and cooler are also configurable in the mod settings.
 	]]>
 	</description>
+    <loadAfter>
+        <li>VanillaExpanded.VFEProduction</li>
+    </loadAfter>
 </ModMetaData>

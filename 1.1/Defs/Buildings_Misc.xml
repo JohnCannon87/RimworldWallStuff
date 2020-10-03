@@ -2,6 +2,86 @@
 <Defs>
 
 <ThingDef ParentName="WallBuildingBase">
+    <defName>WallToolBoard</defName>
+    <label>wall mounted tool board</label>
+    <description>Increases work speed when placed near a workbench. One workbench use to up to two tool boards.</description>
+
+    <graphicData>
+      <texPath>WallToolBoard/WallToolBoard</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,1)</drawSize>
+      <color>(96,114,95)</color>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.5</Flammability>
+    </statBases>
+
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+
+    <costStuffCount>180</costStuffCount>
+
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Metallic</li>
+    </stuffCategories>
+
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.06</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>2</maxSimultaneous>
+      </li>
+    </comps>
+
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+
+    <altitudeLayer>PawnUnused</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.99</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>42</pathCost>
+    <size>(2,1)</size>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    
+  </ThingDef>
+
+<ThingDef ParentName="WallBuildingBase">
     <defName>WallMountedOrbitalTradeBeacon</defName>
     <label>wall mounted orbital trade beacon</label>
     <thingClass>WallStuff.WallTradeBeacon</thingClass>
@@ -53,7 +133,6 @@
       <li>WallStuff.PlaceWorker_WallObject</li>
       <li>WallStuff.PlaceWorker_WallChecker</li>
     </placeWorkers>
-    <designationHotKey>Misc2</designationHotKey>
     <researchPrerequisites>
       <li>MicroelectronicsBasics</li>
       <li>WallStuff</li>
@@ -110,7 +189,6 @@
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
     </comps>
-    <designationHotKey>Misc3</designationHotKey>
     <placeWorkers>
       <li>WallStuff.PlaceWorker_WallObject</li>
       <li>WallStuff.PlaceWorker_WallChecker</li>
