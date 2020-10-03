@@ -57,24 +57,8 @@ namespace WallStuff
             base.Destroy( mode );
         }
 
-        public override void Tick()
+        public override void TickRare()
         {
-            base.Tick();
-            if (compPowerTrader.PowerOn && !wasLit)
-            {
-                compGlower.UpdateLit(true);
-                wasLit = true;
-            }
-            else if (!compPowerTrader.PowerOn && wasLit)
-            {
-                compGlower.UpdateLit(false);
-                wasLit = false;
-            }
-
-            if (!this.IsHashIntervalTick( 60 ))
-            {
-                return;
-            }
             if (!Validate())
             {
                 WorkingState = false;
@@ -104,15 +88,15 @@ namespace WallStuff
         {
             var temperature = roomNorth.Temperature;
             float energyMod;
-            if (temperature < 20f)
+            if (temperature > -20f)
             {
                 energyMod = 1f;
             }
             else
             {
-                energyMod = temperature > 120f
+                energyMod = temperature < -40f
                     ? 0f
-                    : Mathf.InverseLerp( 120f, 20f, temperature );
+                    : Mathf.InverseLerp( -20f, -40f, temperature );
             }
             var energyLimit = WallStuffSettings.coolerPower*energyMod*4.16666651f;
             var hotAir = GenTemperature.ControlTemperatureTempChange( vecNorth, this.Map, energyLimit,

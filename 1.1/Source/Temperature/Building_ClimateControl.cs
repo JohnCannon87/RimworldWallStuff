@@ -5,15 +5,13 @@ using WallStuff;
 
 namespace WallStuff
 {
-    public class Building_MediumHeater : Building_TempControl, IWallAttachable
+    public class Building_ClimateControl : Building_TempControl, IWallAttachable
     {
-        public Thing glower;
 
         private IntVec3 vecNorth;
         private Room roomNorth;
-        private CompMyGlower compGlower;
         private bool isWorking;
-        private bool wasLit;
+        private static float TEMP_RANGE = 2f;
 
         private bool WorkingState
         {
@@ -44,16 +42,10 @@ namespace WallStuff
         {
             base.SpawnSetup(map, respawningAfterLoad);
             vecNorth = Position + IntVec3.North.RotatedBy( Rotation );
-
-            glower = GenSpawn.Spawn( ThingDef.Named( "WallStuff_HeaterGlower" ), vecNorth, map);
-            ((Building_HeaterGlower) glower).Reinit( this );
-            compGlower = glower.TryGetComp< CompMyGlower >();
-            //compGlower.Lit = false;
         }
 
         public override void Destroy( DestroyMode mode = DestroyMode.Vanish )
         {
-            glower.Destroy();
             base.Destroy( mode );
         }
 
@@ -87,6 +79,19 @@ namespace WallStuff
         private void ControlTemperature()
         {
             var temperature = roomNorth.Temperature;
+
+            if(temperature < compTempControl.targetTemperature-TEMP_RANGE)
+            {
+                HeatRoom(temperature);
+            }
+            else if (temperature > compTempControl.targetTemperature + TEMP_RANGE)
+            {
+                CoolRoom(temperature);
+            }
+        }
+
+        private void HeatRoom(float temperature)
+        {
             float energyMod;
             if (temperature < 20f)
             {
@@ -96,13 +101,42 @@ namespace WallStuff
             {
                 energyMod = temperature > 120f
                     ? 0f
-                    : Mathf.InverseLerp( 120f, 20f, temperature );
+                    : Mathf.InverseLerp(120f, 20f, temperature);
             }
-            var energyLimit = WallStuffSettings.heaterPower*energyMod*4.16666651f;
-            var hotAir = GenTemperature.ControlTemperatureTempChange( vecNorth, this.Map, energyLimit,
-                                                                      compTempControl.targetTemperature );
+            var energyLimit = WallStuffSettings.heaterPower * energyMod * 4.16666651f;
+            var hotAir = GenTemperature.ControlTemperatureTempChange(vecNorth, this.Map, energyLimit,
+                                                                      compTempControl.targetTemperature);
 
-            var hotIsHot = !Mathf.Approximately( hotAir, 0f );
+            var hotIsHot = !Mathf.Approximately(hotAir, 0f);
+            if (hotIsHot)
+            {
+                roomNorth.Group.Temperature += hotAir;
+                WorkingState = true;
+            }
+            else
+            {
+                WorkingState = false;
+            }
+        }
+
+        private void CoolRoom(float temperature)
+        {
+            float energyMod;
+            if (temperature > -20f)
+            {
+                energyMod = 1f;
+            }
+            else
+            {
+                energyMod = temperature < -40f
+                    ? 0f
+                    : Mathf.InverseLerp(-20f, -40f, temperature);
+            }
+            var energyLimit = WallStuffSettings.coolerPower * energyMod * 4.16666651f;
+            var hotAir = GenTemperature.ControlTemperatureTempChange(vecNorth, this.Map, energyLimit,
+                                                                      compTempControl.targetTemperature);
+
+            var hotIsHot = !Mathf.Approximately(hotAir, 0f);
             if (hotIsHot)
             {
                 roomNorth.Group.Temperature += hotAir;

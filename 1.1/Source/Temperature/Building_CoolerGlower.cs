@@ -6,14 +6,14 @@ namespace WallStuff
     {
         private Building_MediumCooler Cooler;
 
-        public void Reinit( Building_MediumCooler h )
+        public void Reinit(Building_MediumCooler h)
         {
             Cooler = h;
         }
 
         public override void Tick()
         {
-            if (!this.IsHashIntervalTick( 60 ))
+            if (!this.IsHashIntervalTick(60))
             {
                 return;
             }

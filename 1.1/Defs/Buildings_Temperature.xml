@@ -50,7 +50,7 @@
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <minifiedDef>MinifiedThing</minifiedDef>
-        <tickerType>Normal</tickerType>
+        <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
@@ -106,11 +106,67 @@
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <minifiedDef>MinifiedThing</minifiedDef>
-        <tickerType>Normal</tickerType>
+        <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>WallClimateController</defName>
+        <thingClass>WallStuff.Building_ClimateControl</thingClass>
+        <label>wall climate controller</label>
+        <description>A wall mounted climate controller, requires no venting as the excess heat is repurposed to reduce power consumption. It can automatically turn itself on or off to reach a specific target temperature.</description>
+        <graphicData>
+            <texPath>WallClimate/WallClimate</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+        </graphicData>
+        <uiIconPath>WallClimate/WallClimate_south</uiIconPath>
+        <costList>
+            <Steel>200</Steel>
+            <ComponentIndustrial>7</ComponentIndustrial>
+        </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
+        <building>
+            <isEdifice>false</isEdifice>
+        </building>
+        <statBases>
+            <WorkToBuild>2000</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>0.7</Flammability>
+            <Mass>6</Mass>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>200</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_TempControl">
+                <compClass>CompTempControl</compClass>
+                <energyPerSecond>0</energyPerSecond>
+            </li>
+            <li Class="CompProperties_Breakdownable"/>
+        </comps>
+        <placeWorkers>
+            <li>WallStuff.PlaceWorker_MediumCooler</li>
+            <li>WallStuff.PlaceWorker_WallObject</li>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+        </placeWorkers>
+        <altitudeLayer>PawnUnused</altitudeLayer>
+        <castEdgeShadows>false</castEdgeShadows>
+        <designationCategory>Temperature</designationCategory>
+        <clearBuildingArea>false</clearBuildingArea>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Rare</tickerType>
+        <researchPrerequisites>
+            <li>WallStuff</li>
+        </researchPrerequisites>
+        <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     </ThingDef>
 
     <ThingDef ParentName="BuildingBase">
@@ -140,7 +196,7 @@
         <castEdgeShadows>false</castEdgeShadows>
         <menuHidden>true</menuHidden>
         <selectable>false</selectable>
-        <tickerType>Normal</tickerType>
+        <tickerType>Rare</tickerType>
         <useHitPoints>false</useHitPoints>
     </ThingDef>
 
@@ -171,7 +227,7 @@
         <castEdgeShadows>false</castEdgeShadows>
         <menuHidden>true</menuHidden>
         <selectable>false</selectable>
-        <tickerType>Normal</tickerType>
+        <tickerType>Rare</tickerType>
         <useHitPoints>false</useHitPoints>
     </ThingDef>
 
