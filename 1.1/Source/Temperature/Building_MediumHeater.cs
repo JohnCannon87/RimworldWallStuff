@@ -11,9 +11,7 @@ namespace WallStuff
 
         private IntVec3 vecNorth;
         private Room roomNorth;
-        private CompMyGlower compGlower;
         private bool isWorking;
-        private bool wasLit;
 
         private bool WorkingState
         {
@@ -44,11 +42,6 @@ namespace WallStuff
         {
             base.SpawnSetup(map, respawningAfterLoad);
             vecNorth = Position + IntVec3.North.RotatedBy( Rotation );
-
-            glower = GenSpawn.Spawn( ThingDef.Named( "WallStuff_HeaterGlower" ), vecNorth, map);
-            ((Building_HeaterGlower) glower).Reinit( this );
-            compGlower = glower.TryGetComp< CompMyGlower >();
-            //compGlower.Lit = false;
         }
 
         public override void Destroy( DestroyMode mode = DestroyMode.Vanish )

@@ -169,68 +169,6 @@
         <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     </ThingDef>
 
-    <ThingDef ParentName="BuildingBase">
-        <defName>WallStuff_HeaterGlower</defName>
-        <thingClass>WallStuff.Building_HeaterGlower</thingClass>
-        <label>wall heater</label>
-        <graphicData>
-            <texPath>Things/Transparent</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <shaderType>Transparent</shaderType>
-        </graphicData>
-        <building>
-            <isEdifice>false</isEdifice>
-        </building>
-        <statBases>
-            <WorkToBuild>1</WorkToBuild>
-            <Flammability>0</Flammability>
-        </statBases>
-        <comps>
-            <li Class="CompProperties_Glower">
-                <compClass>WallStuff.CompMyGlower</compClass>
-                <glowRadius>16</glowRadius>
-                <glowColor>(255,150,100,0)</glowColor>
-            </li>
-        </comps>
-        <altitudeLayer>Building</altitudeLayer>
-        <castEdgeShadows>false</castEdgeShadows>
-        <menuHidden>true</menuHidden>
-        <selectable>false</selectable>
-        <tickerType>Rare</tickerType>
-        <useHitPoints>false</useHitPoints>
-    </ThingDef>
-
-    <ThingDef ParentName="BuildingBase">
-        <defName>WallStuff_CoolerGlower</defName>
-        <thingClass>WallStuff.Building_CoolerGlower</thingClass>
-        <label>wall cooler</label>
-        <graphicData>
-            <texPath>Things/Transparent</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <shaderType>Transparent</shaderType>
-        </graphicData>
-        <building>
-            <isEdifice>false</isEdifice>
-        </building>
-        <statBases>
-            <WorkToBuild>1</WorkToBuild>
-            <Flammability>0</Flammability>
-        </statBases>
-        <comps>
-            <li Class="CompProperties_Glower">
-                <compClass>WallStuff.CompMyGlower</compClass>
-                <glowRadius>16</glowRadius>
-                <glowColor>(100,150,255,0)</glowColor>
-            </li>
-        </comps>
-        <altitudeLayer>Building</altitudeLayer>
-        <castEdgeShadows>false</castEdgeShadows>
-        <menuHidden>true</menuHidden>
-        <selectable>false</selectable>
-        <tickerType>Rare</tickerType>
-        <useHitPoints>false</useHitPoints>
-    </ThingDef>
-
     <ThingDef ParentName="WallBuildingBase">
         <defName>WallVent</defName>
         <label>in wall vent</label>
