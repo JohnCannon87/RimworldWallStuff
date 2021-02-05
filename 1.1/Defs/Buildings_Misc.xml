@@ -71,7 +71,7 @@
     <clearBuildingArea>false</clearBuildingArea>
     <minifiedDef>MinifiedThing</minifiedDef>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
     
   </ThingDef>
 
