@@ -15,6 +15,7 @@
             </shadowData>
             <drawSize>(2,1)</drawSize>
         </graphicData>
+        <uiIconPath>WallScreen/WallScreen_UI</uiIconPath>
         <altitudeLayer>PawnUnused</altitudeLayer>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <rotatable>true</rotatable>
@@ -85,6 +86,7 @@
             </shadowData>
             <drawSize>(1,1)</drawSize>
         </graphicData>
+        <uiIconPath>WallScreen/TinyWallScreen_UI</uiIconPath>
         <altitudeLayer>PawnUnused</altitudeLayer>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <rotatable>true</rotatable>

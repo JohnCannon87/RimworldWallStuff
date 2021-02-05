@@ -10,7 +10,7 @@
             <texPath>WallHeater/WallHeater</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-        <uiIconPath>WallHeater/WallHeater_south</uiIconPath>
+        <uiIconPath>WallHeater/WallHeater_UI</uiIconPath>
         <costList>
             <Steel>50</Steel>
             <ComponentIndustrial>1</ComponentIndustrial>
@@ -66,7 +66,7 @@
             <texPath>WallCooler/WallCooler</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-        <uiIconPath>WallCooler/WallCooler_south</uiIconPath>
+        <uiIconPath>WallCooler/WallCooler_UI</uiIconPath>
         <costList>
             <Steel>90</Steel>
             <ComponentIndustrial>3</ComponentIndustrial>
@@ -122,7 +122,7 @@
             <texPath>WallClimate/WallClimate</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-        <uiIconPath>WallClimate/WallClimate_south</uiIconPath>
+        <uiIconPath>WallClimate/WallClimate_UI</uiIconPath>
         <costList>
             <Steel>200</Steel>
             <ComponentIndustrial>7</ComponentIndustrial>
@@ -183,6 +183,7 @@
                 <cornerBR>Damage/Corner</cornerBR>
             </damageData>
         </graphicData>
+        <uiIconPath>WallVent/WallVent_UI</uiIconPath>
         <altitudeLayer>BuildingOnTop</altitudeLayer>
         <passability>Impassable</passability>
         <fillPercent>0.99</fillPercent>

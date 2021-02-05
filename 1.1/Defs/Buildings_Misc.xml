@@ -11,7 +11,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(2,1)</drawSize>
     </graphicData>
-    <uiIconPath>WallToolBoard/WallToolBoard_south</uiIconPath>
+    <uiIconPath>WallToolBoard/WallToolBoard_UI</uiIconPath>
 
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
@@ -83,7 +83,7 @@
       <texPath>WallBeacon/WallBeacon</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
-    <uiIconPath>WallBeacon/WallBeacon_south</uiIconPath>
+    <uiIconPath>WallBeacon/WallBeacon_UI</uiIconPath>
     <altitudeLayer>PawnUnused</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
@@ -142,7 +142,7 @@
       <texPath>WallCommsConsole/WallCommsConsole</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
-    <uiIconPath>WallCommsConsole/WallCommsConsole_south</uiIconPath>
+    <uiIconPath>WallCommsConsole/WallCommsConsole_UI</uiIconPath>
     <altitudeLayer>PawnUnused</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <minifiedDef>MinifiedThing</minifiedDef>

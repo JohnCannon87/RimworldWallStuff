@@ -11,7 +11,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(1,1)</drawSize>
     </graphicData>
-    <uiIconPath>WallBat/WallBat_south</uiIconPath>
+    <uiIconPath>WallBat/WallBat_UI</uiIconPath>
     <altitudeLayer>PawnUnused</altitudeLayer>
     <fillPercent>0.99</fillPercent>
     <tickerType>Normal</tickerType>
@@ -80,7 +80,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1, 1)</drawSize>
 		</graphicData>
-    <uiIconPath>WallBat/WallCircuitBreaker_south</uiIconPath>
+    <uiIconPath>WallBat/WallCircuitBreaker_UI</uiIconPath>
 
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -140,5 +140,64 @@
     <clearBuildingArea>false</clearBuildingArea>
 		<leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
 	</ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>WallPowerSwitch</defName>
+    <label>wall power switch</label>
+    <description>Switches power on/off.</description>
+		<thingClass>WallStuff.WallBuilding_PowerSwitch</thingClass>
+		<minifiedDef>MinifiedThing</minifiedDef>
+    <category>Building</category>
+    <graphicData>
+      <texPath>WallSwitch/WallSwitch</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <uiIconPath>WallSwitch/WallSwitch_UI</uiIconPath>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <allowWireConnection>false</allowWireConnection>
+      <isEdifice>false</isEdifice>
+    </building>
+    <altitudeLayer>PawnUnused</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0</Flammability>
+			<Mass>1</Mass>
+    </statBases>
+    <placingDraggableDimensions>0</placingDraggableDimensions>
+    <placeWorkers>
+        <li>WallStuff.PlaceWorker_WallObject</li>
+        <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <costList>
+      <Steel>15</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTransmitter</compClass>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <tickerType>Normal</tickerType>
+    <designationCategory>Power</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <clearBuildingArea>false</clearBuildingArea>
+    <thingCategories>
+			<li>BuildingsPower</li>
+		</thingCategories>
+  </ThingDef>
 
 </Defs>

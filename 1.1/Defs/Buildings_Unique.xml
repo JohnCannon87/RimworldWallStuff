@@ -12,7 +12,7 @@
         <thingCategories>
             <li>BuildingsSpecial</li>
         </thingCategories>
-        <uiIconPath>Replicator/Replicator_south</uiIconPath>
+        <uiIconPath>Replicator/Replicator_UI</uiIconPath>
         <costList>
             <Gold>250</Gold>
             <Plasteel>200</Plasteel>
