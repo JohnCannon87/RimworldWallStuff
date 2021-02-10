@@ -7,8 +7,6 @@ namespace WallStuff
 {
     public class Building_MediumCooler : Building_TempControl, IWallAttachable
     {
-        public Thing glower;
-
         private IntVec3 vecNorth;
         private Room roomNorth;
         private bool isWorking;
@@ -46,7 +44,6 @@ namespace WallStuff
 
         public override void Destroy( DestroyMode mode = DestroyMode.Vanish )
         {
-            glower.Destroy();
             base.Destroy( mode );
         }
 
