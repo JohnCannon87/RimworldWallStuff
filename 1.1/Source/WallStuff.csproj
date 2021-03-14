@@ -86,6 +86,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Power\WallBuilding_PowerSwitch.cs" />
+    <Compile Include="Radio\ThoughtWorker_Hifi.cs" />
     <Compile Include="Replicator\WallMountedCompProperties_Spawner.cs" />
     <Compile Include="Replicator\WallMountedCompSpawner.cs" />
     <Compile Include="Television\WallThingBase.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Television\WatchWallBuildingUtility.cs" />
     <Compile Include="Temperature\Wall_Building_Vent.cs" />
     <Compile Include="ThingCountExposable.cs" />
+    <Compile Include="ThingDefOf.cs" />
     <Compile Include="Trade\PlaceWorker_ShowWallMountedTradeBeaconRadius.cs" />
     <Compile Include="Trade\WallMountedTradeUtility.cs" />
     <Compile Include="Trade\WallTradeBeacon.cs" />
@@ -127,7 +129,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
