@@ -13,8 +13,13 @@ namespace WallStuff
     {
         private int ticksUntilSpawn;
         private int thingToSpawnIndex = 0;
+        private int ticksToSpawn = 60000;
         private Boolean spawned = false;
         private ThingCountExposable thingToSpawn;
+        private const int ONE_HOUR_TICKS = 2500;
+        private const int ONE_DAY_TICKS = 60000;
+        private const int MAX_SPAWN_TIME = ONE_DAY_TICKS * 120;
+        private const int MIN_SPAWN_TIME = ONE_HOUR_TICKS;
 
         WallMountedCompProperties_Spawner WallMountedPropsSpawner
         {
@@ -58,14 +63,6 @@ namespace WallStuff
             if (!this.parent.Spawned)
             {
                 return;
-            }
-            Hive hive = this.parent as Hive;
-            if (hive != null)
-            {
-                if (!hive.active)
-                {
-                    return;
-                }
             }
             else if (this.parent.Position.Fogged(this.parent.Map))
             {
@@ -187,6 +184,50 @@ namespace WallStuff
                 yield return act;
             }
 
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.IncrementSpawnTimerByAnHour(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/IncField", true);
+                act.defaultLabel = "Plus 1 Hour - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.DecrementSpawnTimerByAnHour(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/DecField", true);
+                act.defaultLabel = "Minus 1 Hour - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.IncrementSpawnTimerByADay(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/IncFieldDay", true);
+                act.defaultLabel = "Plus 1 Day - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
+            if (spawned)
+            {
+                Command_Action act = new Command_Action();
+                act.action = () => this.DecrementSpawnTimerByADay(act);
+                act.icon = ContentFinder<Texture2D>.Get("UI/DecFieldDay", true);
+                act.defaultLabel = "Minus 1 Day - Currently " + getTimeToSpawn();
+                act.defaultDesc = "" + getTimeToSpawn();
+                act.activateSound = SoundDef.Named("Click");
+                yield return act;
+            }
+
             if (Prefs.DevMode && this.thingToSpawn != null)
             {
                 yield return new Command_Action
@@ -211,7 +252,9 @@ namespace WallStuff
 
         private void ResetCountdown()
         {
-            this.ticksUntilSpawn = this.WallMountedPropsSpawner.spawnIntervalRange.RandomInRange;
+            IntRange spawnIntervalRange = new IntRange(ticksToSpawn, ticksToSpawn);
+
+            this.ticksUntilSpawn = spawnIntervalRange.RandomInRange;
         }
 
         public override void PostExposeData()
@@ -229,6 +272,57 @@ namespace WallStuff
                 return "NextSpawnedItemIn".Translate(GenLabel.ThingLabel(this.thingToSpawn.thingDef, null, this.thingToSpawn.count)) + ": " + this.ticksUntilSpawn.ToStringTicksToPeriod();
             }
             return null;
+        }
+
+        private void IncrementSpawnTimerByAnHour(Command_Action act)
+        {
+            IncrementSpawnTimer(act, ONE_HOUR_TICKS);
+        }
+
+        private void DecrementSpawnTimerByAnHour(Command_Action act)
+        {
+            DecrementSpawnTimer(act, ONE_HOUR_TICKS);
+        }
+        private void IncrementSpawnTimerByADay(Command_Action act)
+        {
+            IncrementSpawnTimer(act, ONE_DAY_TICKS);
+        }
+
+        private void DecrementSpawnTimerByADay(Command_Action act)
+        {
+            DecrementSpawnTimer(act, ONE_DAY_TICKS);
+        }
+
+        private void IncrementSpawnTimer(Command_Action act, int ticks)
+        {
+            ticksToSpawn += ticks;
+            if (ticksToSpawn > MAX_SPAWN_TIME)
+            {
+                ticksToSpawn = MAX_SPAWN_TIME;
+            }
+            ResetCountdown();
+        }
+
+        private void DecrementSpawnTimer(Command_Action act, int ticks)
+        {
+            ticksToSpawn -= ticks;
+            if (ticksToSpawn < MIN_SPAWN_TIME)
+            {
+                ticksToSpawn = MIN_SPAWN_TIME;
+            }
+            ResetCountdown();
+        }
+
+        private String getTimeToSpawn()
+        {
+            int daysTillSpawn = ticksToSpawn / ONE_DAY_TICKS;
+
+            if(daysTillSpawn < 3)
+            {
+                return (ticksToSpawn / ONE_HOUR_TICKS) + " Hours";
+            }
+
+            return daysTillSpawn + " Days";
         }
     }
 }

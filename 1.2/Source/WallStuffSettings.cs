@@ -10,8 +10,8 @@ namespace WallStuff
     class WallStuffSettings : ModSettings
     {
         internal static List<ThingCountExposable> listOfSpawnableThings = null;
-        internal static float heaterPower;
-        internal static float coolerPower;
+        internal static float heaterPower = 21f;
+        internal static float coolerPower = -15f;
 
         public override void ExposeData()
         {
@@ -39,14 +39,6 @@ namespace WallStuff
                     }
                 }
                 listOfSpawnableThings = dict;
-                if (heaterPower == 0f)
-                {
-                    heaterPower = 21f;
-                }
-                if (coolerPower == 0f)
-                {
-                    coolerPower = -15f;
-                }
             }
         }
     }

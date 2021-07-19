@@ -47,7 +47,7 @@ namespace WallStuff
             Scribe_Values.Look(ref count, "count", 0, false);
             if (Scribe.mode == LoadSaveMode.ResolvingCrossRefs && thingDef == null)
             {
-                thingDef = ThingDefOf.Steel;
+                thingDef = RimWorld.ThingDefOf.Steel;
                 count = (count <= 0) ? 10 : count;
             }
         }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>Replicator</defName>
-        <thingClass>Building</thingClass>
         <label>replicator</label>
         <description>A small wall mounted replicator unit.</description>
         <graphicData>
@@ -13,7 +12,7 @@
         <thingCategories>
             <li>BuildingsSpecial</li>
         </thingCategories>
-        <uiIconPath>Replicator/Replicator_south</uiIconPath>
+        <uiIconPath>Replicator/Replicator_UI</uiIconPath>
         <costList>
             <Gold>250</Gold>
             <Plasteel>200</Plasteel>
@@ -29,21 +28,16 @@
             <Mass>35</Mass>
             <MarketValue>3000</MarketValue>
         </statBases>
+        <tickerType>Rare</tickerType>
         <comps>
             <li Class="CompProperties_Power">
-                <compClass>CompPowerPlant</compClass>
+                <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>1000</basePowerConsumption>
-                <transmitsPower>true</transmitsPower>
             </li>
             <li Class="CompProperties_Breakdownable"/>
             <li Class="CompProperties_Flickable"/>
             <li Class="WallStuff.WallMountedCompProperties_Spawner">
                 <requiresPower>true</requiresPower>
-                <thingToSpawn>MealLavish</thingToSpawn>
-                <spawnIntervalRange>
-                    <min>60000</min>
-                    <max>60000</max>
-                </spawnIntervalRange>
                 <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
                 <showMessageIfOwned>true</showMessageIfOwned>
             </li>
@@ -57,7 +51,6 @@
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <altitudeLayer>PawnUnused</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
-        <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>MatterToEnergyConversion</li>
         </researchPrerequisites>
@@ -66,4 +59,3 @@
     </ThingDef>
 
 </Defs>
-

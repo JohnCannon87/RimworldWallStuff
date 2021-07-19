@@ -8,7 +8,7 @@ namespace WallStuff
 {
     class PlaceWorker_WallObject : PlaceWorker
     {
-        public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 center, Rot4 rot, Map map, Thing thingToIgnore = null)
+        public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 center, Rot4 rot, Map map, Thing thingToIgnore = null, Thing thing = null )
         {
             IntVec3 c = center;
             Building wall = c.GetEdifice(map);

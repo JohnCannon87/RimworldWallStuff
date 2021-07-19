@@ -11,8 +11,6 @@ namespace WallStuff
     {
         public ThingDef thingToSpawn;
 
-        public IntRange spawnIntervalRange = new IntRange(100, 100);
-
         public int spawnMaxAdjacent = -1;
 
         public bool spawnForbidden;

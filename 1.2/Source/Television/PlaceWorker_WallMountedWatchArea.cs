@@ -9,7 +9,7 @@ namespace WallStuff
 {
     public class PlaceWorker_WallMountedWatchArea : PlaceWorker_WatchArea
     {
-        public override void DrawGhost( ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol )
+        public override void DrawGhost( ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null )
         {
             Map currentMap = Find.CurrentMap;
             var vecNorth = center + IntVec3.North.RotatedBy(rot);

@@ -7,13 +7,9 @@ namespace WallStuff
 {
     public class Building_MediumHeater : Building_TempControl, IWallAttachable
     {
-        public Thing glower;
-
         private IntVec3 vecNorth;
         private Room roomNorth;
-        private CompMyGlower compGlower;
         private bool isWorking;
-        private bool wasLit;
 
         private bool WorkingState
         {
@@ -44,37 +40,15 @@ namespace WallStuff
         {
             base.SpawnSetup(map, respawningAfterLoad);
             vecNorth = Position + IntVec3.North.RotatedBy( Rotation );
-
-            glower = GenSpawn.Spawn( ThingDef.Named( "WallStuff_HeaterGlower" ), vecNorth, map);
-            ((Building_HeaterGlower) glower).Reinit( this );
-            compGlower = glower.TryGetComp< CompMyGlower >();
-            //compGlower.Lit = false;
         }
 
         public override void Destroy( DestroyMode mode = DestroyMode.Vanish )
         {
-            glower.Destroy();
             base.Destroy( mode );
         }
 
-        public override void Tick()
+        public override void TickRare()
         {
-            base.Tick();
-            if (compPowerTrader.PowerOn && !wasLit)
-            {
-                compGlower.UpdateLit(true);
-                wasLit = true;
-            }
-            else if (!compPowerTrader.PowerOn && wasLit)
-            {
-                compGlower.UpdateLit(false);
-                wasLit = false;
-            }
-
-            if (!this.IsHashIntervalTick( 60 ))
-            {
-                return;
-            }
             if (!Validate())
             {
                 WorkingState = false;

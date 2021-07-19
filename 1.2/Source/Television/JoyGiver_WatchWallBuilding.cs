@@ -14,71 +14,71 @@ namespace WallStuff
 
         public override Job TryGiveJob(Pawn pawn)
         {
+            //jcLog.Warning(pawn.Name + " Try Give job");
             Thing thing = this.FindBestGame(pawn, false, IntVec3.Invalid);
             if (thing != null)
             {
+                //jcLog.Warning(pawn.Name + " Found Thing");
                 return this.TryGivePlayJob(pawn, thing);
             }
             return null;
         }
 
+        public override Job TryGiveJobWhileInBed(Pawn pawn)
+        {
+            //jcLog.Warning(pawn.Name + " Try Give job in bed");
+            Thing thing = this.FindBestGame(pawn, true, IntVec3.Invalid);
+            if (thing != null)
+            {
+                //jcLog.Warning(pawn.Name + " Found Thing");
+                return this.TryGivePlayJobWhileInBed(pawn, thing);
+            }
+            return null;
+        }
+
+
         private Thing FindBestGame(Pawn pawn, bool inBed, IntVec3 partySpot)
         {
+            //jcLog.Warning(pawn.Name + " Find Best");
             tmpCandidates.Clear();
             this.GetSearchSet(pawn, tmpCandidates);
-            //jcLog.Warning("Found & Returned " + tmpCandidates.Count + " Things");
             if (tmpCandidates.Count == 0)
             {
                 return null;
             }
             Predicate<Thing> predicate = (Thing t) => this.CanInteractWith(pawn, t, inBed);
-            //jcLog.Warning("Is Party Spot Valid? " + partySpot.IsValid);
             if (partySpot.IsValid)
             {
                 Predicate<Thing> oldValidator = predicate;
-                predicate = ((Thing x) => PartyUtility.InPartyArea(x.Position, partySpot, pawn.Map) && oldValidator(x));
+                predicate = ((Thing x) => GatheringsUtility.InGatheringArea(x.Position, partySpot, pawn.Map) && oldValidator(x));
             }
             IntVec3 position = pawn.Position;
             Map map = pawn.Map;
             List<Thing> searchSet = tmpCandidates;
-            //PathEndMode peMode = PathEndMode.OnCell;
-            //TraverseParms traverseParams = TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false);
             Predicate<Thing> validator = predicate;
-            //jcLog.Warning("Finding Closest Thing"); ;
             Thing thing = searchSet[0];
-            //jcLog.Warning("Thing Spawned " + thing.Spawned);
-            //jcLog.Warning("num3 " + (9999f * 9999f));
-            //jcLog.Warning("num4 " + (float)(position - thing.Position).LengthHorizontalSquared);
-            //Thing result = GenClosest.ClosestThing_Global_Reachable(position, map, searchSet, peMode, traverseParams, 9999f, validator, null);
             Thing result = GenClosest.ClosestThing_Global(position, searchSet, 9999f, validator, null);
-            //jcLog.Warning("Found: " + result.def.defName);
             tmpCandidates.Clear();
             return result;
         }
 
         protected override void GetSearchSet(Pawn pawn, List<Thing> outCandidates)
         {
-            //jcLog.Warning("GetSearchSet");
             outCandidates.Clear();
             if (this.def.thingDefs == null)
             {
-                //jcLog.Warning("NoThingDefs");
                 return;
             }
             if (this.def.thingDefs.Count == 1)
             {
-                //jcLog.Warning("OneThingDef");
                 outCandidates.AddRange(pawn.Map.listerThings.ThingsOfDef(this.def.thingDefs[0]));
             }
             else
             {
-                //jcLog.Warning("MultipleThingDefs");
                 for (int i = 0; i < this.def.thingDefs.Count; i++)
                 {
                     ThingDef thingDef = this.def.thingDefs[i];
-                    //jcLog.Warning("Checking Thing Def: " + thingDef.defName);
                     List<Thing> thingsFound = pawn.Map.listerThings.ThingsOfDef(thingDef);
-                    //jcLog.Warning("Found " + thingsFound.Count + " Things");
                     outCandidates.AddRange(thingsFound);
                 }
             }
@@ -86,50 +86,97 @@ namespace WallStuff
 
         protected override bool CanInteractWith(Pawn pawn, Thing t, bool inBed)
         {
-            if (!base.CanInteractWith(pawn, t, inBed))
+            //jcLog.Warning(pawn.Name + " Can Pawn interact with thing ??");
+            if (!CanInteractCheck(pawn, t, inBed))
             {
-                //jcLog.Warning("CanInteractWithFalse");
+                //jcLog.Warning(pawn.Name + " No :(");
                 return false;
             }
-            //jcLog.Warning("CanInteractWithTrue");
             if (inBed)
             {
-                //jcLog.Warning("CanInteractWith");
+                //jcLog.Warning(pawn.Name + " In Bed");
                 Building_Bed bed = pawn.CurrentBed();
-                if (t.def.building.isEdifice){
-                    //jcLog.Warning("CanInteractWith-ItsAnEdifice");
+                if (t.def.building.isEdifice)
+                {
+                    //jcLog.Warning(pawn.Name + " is ediface");
                     return WatchBuildingUtility.CanWatchFromBed(pawn, bed, t);
                 } else
                 {
-                    //jcLog.Warning("CanInteractWith-ItsNotAnEdifice");
+                    //jcLog.Warning(pawn.Name + " is not ediface");
                     return WatchWallBuildingUtility.CanWatchFromBed(pawn, bed, t);
                 }
             }
             return true;
         }
 
-        protected override Job TryGivePlayJob(Pawn pawn, Thing t)
+        private bool CanInteractCheck(Pawn pawn, Thing t, bool inBed)
         {
-            IntVec3 c;
-            Building t2;
-            //jcLog.Warning("TryGivePlayJob");
+            //jcLog.Warning(pawn.Name + " is building ediface ?");
             if (t.def.building.isEdifice)
             {
-                //jcLog.Warning("TryGivePlayJob-ItsAnEdifice");
+                //jcLog.Warning(pawn.Name + " yes");
+                return base.CanInteractWith(pawn, t, inBed);
+            }
+            else
+            {
+                //jcLog.Warning(pawn.Name + " no");
+                return CanInteractWithCheck(pawn, t, inBed);
+            }
+        }
+
+        private bool CanInteractWithCheck(Pawn pawn, Thing t, bool inBed)
+        {
+            //jcLog.Warning(pawn.Name + " Can Pawn reserve thing ?");
+            if (!pawn.CanReserve(t, this.def.jobDef.joyMaxParticipants, -1, null, false))
+            {
+                return false;
+            }
+            //jcLog.Warning(pawn.Name + " Is thing forbidden ?");
+            if (t.IsForbidden(pawn))
+            {
+                return false;
+            }
+            //jcLog.Warning(pawn.Name + " Is it socially proper ?");
+            if (!t.IsSociallyProper(pawn))
+            {
+                return false;
+            }
+            //jcLog.Warning(pawn.Name + " Politically ?");
+            if (!t.IsPoliticallyProper(pawn))
+            {
+                return false;
+            }
+            CompPowerTrader compPowerTrader = t.TryGetComp<CompPowerTrader>();
+            //jcLog.Warning("1" + (compPowerTrader == null));
+            //jcLog.Warning("2" + (compPowerTrader.PowerOn));
+            //jcLog.Warning("3" + (!this.def.unroofedOnly));
+            //jcLog.Warning("4" + (!WatchWallBuildingUtility.GetAdjustedCenter(t).Roofed(t.Map)));
+            //jcLog.Warning("5" + ((compPowerTrader == null || compPowerTrader.PowerOn)));
+            //jcLog.Warning("6" + ((!this.def.unroofedOnly || !WatchWallBuildingUtility.GetAdjustedCenter(t).Roofed(t.Map))));
+            return (compPowerTrader == null || compPowerTrader.PowerOn) && (!this.def.unroofedOnly || !WatchWallBuildingUtility.GetAdjustedCenter(t).Roofed(t.Map));
+        }
+
+        protected override Job TryGivePlayJob(Pawn pawn, Thing t)
+        {
+            //jcLog.Warning(pawn.Name + " Try Give play job");
+            IntVec3 c;
+            Building t2;
+            if (t.def.building.isEdifice)
+            {
+                //jcLog.Warning(pawn.Name + " It's An Ediface");
                 if (!WatchWallBuildingUtility.TryFindBestWatchCell(t, pawn, this.def.desireSit, out c, out t2))
                 {
-                    //jcLog.Warning("TryGivePlayJob-ItsAnEdifice Couldn't Find Watch Cell");
                     return null;
                 }
             } else
             {
-                //jcLog.Warning("TryGivePlayJob-ItsNotAnEdifice");
+                //jcLog.Warning(pawn.Name + " It's NOT An Ediface");
                 if (!WatchBuildingUtility.TryFindBestWatchCell(t, pawn, this.def.desireSit, out c, out t2))
                 {
-                    //jcLog.Warning("TryGivePlayJob-ItsNotAnEdifice Couldn't Find Watch Cell");
                     return null;
                 }
             }
+            //jcLog.Warning(pawn.Name + " Return a job !");
             return new Job(this.def.jobDef, t, c, t2);
         }
     }

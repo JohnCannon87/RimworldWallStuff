@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>WallHeater</defName>
         <thingClass>WallStuff.Building_MediumHeater</thingClass>
         <label>wall heater</label>
@@ -10,31 +10,34 @@
             <texPath>WallHeater/WallHeater</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-		<uiIconPath>WallHeater/WallHeater_south</uiIconPath>
+        <uiIconPath>WallHeater/WallHeater_UI</uiIconPath>
         <costList>
             <Steel>50</Steel>
             <ComponentIndustrial>1</ComponentIndustrial>
         </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
         <building>
             <isEdifice>false</isEdifice>
         </building>
         <statBases>
             <WorkToBuild>1500</WorkToBuild>
             <MaxHitPoints>100</MaxHitPoints>
-            <Mass>6</Mass>
             <Flammability>0.5</Flammability>
+            <Mass>6</Mass>
         </statBases>
         <comps>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>175</basePowerConsumption>
             </li>
-			<li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Flickable"/>
             <li Class="CompProperties_TempControl">
-				<compClass>CompTempControl</compClass>
+                <compClass>CompTempControl</compClass>
                 <energyPerSecond>40</energyPerSecond>
             </li>
-			<li Class="CompProperties_Breakdownable"/>
+            <li Class="CompProperties_Breakdownable"/>
         </comps>
         <placeWorkers>
             <li>WallStuff.PlaceWorker_MediumHeater</li>
@@ -46,14 +49,15 @@
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-        <tickerType>Normal</tickerType>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     </ThingDef>
 
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="WallBuildingBase">
         <defName>WallCooler</defName>
         <thingClass>WallStuff.Building_MediumCooler</thingClass>
         <label>wall cooler</label>
@@ -62,11 +66,14 @@
             <texPath>WallCooler/WallCooler</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
-		<uiIconPath>WallCooler/WallCooler_south</uiIconPath>
+        <uiIconPath>WallCooler/WallCooler_UI</uiIconPath>
         <costList>
             <Steel>90</Steel>
             <ComponentIndustrial>3</ComponentIndustrial>
         </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
         <building>
             <isEdifice>false</isEdifice>
         </building>
@@ -74,18 +81,19 @@
             <WorkToBuild>2000</WorkToBuild>
             <MaxHitPoints>100</MaxHitPoints>
             <Flammability>0.7</Flammability>
+            <Mass>6</Mass>
         </statBases>
         <comps>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>200</basePowerConsumption>
             </li>
-			<li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Flickable"/>
             <li Class="CompProperties_TempControl">
-				<compClass>CompTempControl</compClass>
+                <compClass>CompTempControl</compClass>
                 <energyPerSecond>-40</energyPerSecond>
             </li>
-			<li Class="CompProperties_Breakdownable"/>
+            <li Class="CompProperties_Breakdownable"/>
         </comps>
         <placeWorkers>
             <li>WallStuff.PlaceWorker_MediumCooler</li>
@@ -97,74 +105,123 @@
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-        <tickerType>Normal</tickerType>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     </ThingDef>
 
-    <ThingDef ParentName="BuildingBase">
-        <defName>WallStuff_HeaterGlower</defName>
-        <thingClass>WallStuff.Building_HeaterGlower</thingClass>
-        <label>wall heater</label>
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>WallClimateController</defName>
+        <thingClass>WallStuff.Building_ClimateControl</thingClass>
+        <label>wall climate controller</label>
+        <description>A wall mounted climate controller, requires no venting as the excess heat is repurposed to reduce power consumption. It can automatically turn itself on or off to reach a specific target temperature.</description>
         <graphicData>
-            <texPath>Things/Transparent</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <shaderType>Transparent</shaderType>
+            <texPath>WallClimate/WallClimate</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
+        <uiIconPath>WallClimate/WallClimate_UI</uiIconPath>
+        <costList>
+            <Steel>200</Steel>
+            <ComponentIndustrial>7</ComponentIndustrial>
+        </costList>
+        <thingCategories>
+            <li>BuildingsTemperature</li>
+        </thingCategories>
         <building>
             <isEdifice>false</isEdifice>
         </building>
         <statBases>
-            <WorkToBuild>1</WorkToBuild>
-            <Flammability>0</Flammability>
+            <WorkToBuild>2000</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>0.7</Flammability>
+            <Mass>6</Mass>
         </statBases>
         <comps>
-            <li Class="CompProperties_Glower">
-                <compClass>WallStuff.CompMyGlower</compClass>
-                <glowRadius>16</glowRadius>
-                <glowColor>(255,150,100,0)</glowColor>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>200</basePowerConsumption>
             </li>
+            <li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_TempControl">
+                <compClass>CompTempControl</compClass>
+                <energyPerSecond>0</energyPerSecond>
+            </li>
+            <li Class="CompProperties_Breakdownable"/>
         </comps>
-        <altitudeLayer>Building</altitudeLayer>
+        <placeWorkers>
+            <li>WallStuff.PlaceWorker_MediumCooler</li>
+            <li>WallStuff.PlaceWorker_WallObject</li>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+        </placeWorkers>
+        <altitudeLayer>PawnUnused</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
-        <menuHidden>true</menuHidden>
-        <selectable>false</selectable>
-        <tickerType>Normal</tickerType>
-        <useHitPoints>false</useHitPoints>
+        <designationCategory>Temperature</designationCategory>
+        <clearBuildingArea>false</clearBuildingArea>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tickerType>Rare</tickerType>
+        <researchPrerequisites>
+            <li>WallStuff</li>
+        </researchPrerequisites>
+        <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     </ThingDef>
 
-    <ThingDef ParentName="BuildingBase">
-        <defName>WallStuff_CoolerGlower</defName>
-        <thingClass>WallStuff.Building_CoolerGlower</thingClass>
-        <label>wall cooler</label>
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>WallVent</defName>
+        <label>in wall vent</label>
+        <thingClass>WallStuff.Wall_Building_Vent</thingClass>
         <graphicData>
-            <texPath>Things/Transparent</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <shaderType>Transparent</shaderType>
+            <texPath>WallVent/WallVent</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
         </graphicData>
-        <building>
-            <isEdifice>false</isEdifice>
-        </building>
-        <statBases>
-            <WorkToBuild>1</WorkToBuild>
-            <Flammability>0</Flammability>
-        </statBases>
+        <uiIconPath>WallVent/WallVent_UI</uiIconPath>
+        <altitudeLayer>BuildingOnTop</altitudeLayer>
+        <passability>Impassable</passability>
+        <fillPercent>0.99</fillPercent>
+        <coversFloor>true</coversFloor>
+        <blockLight>true</blockLight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>1.0</staticSunShadowHeight>
         <comps>
-            <li Class="CompProperties_Glower">
-                <compClass>WallStuff.CompMyGlower</compClass>
-                <glowRadius>16</glowRadius>
-                <glowColor>(100,150,255,0)</glowColor>
+            <li Class="CompProperties_Flickable">
+                <commandTexture>UI/Commands/Vent</commandTexture>
+                <commandLabelKey>CommandDesignateOpenCloseVentLabel</commandLabelKey>
+                <commandDescKey>CommandDesignateOpenCloseVentDesc</commandDescKey>
             </li>
         </comps>
-        <altitudeLayer>Building</altitudeLayer>
-        <castEdgeShadows>false</castEdgeShadows>
-        <menuHidden>true</menuHidden>
-        <selectable>false</selectable>
-        <tickerType>Normal</tickerType>
-        <useHitPoints>false</useHitPoints>
+        <statBases>
+            <WorkToBuild>400</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <tickerType>Rare</tickerType>
+        <description>A simple vent for equalizing the temperature between two rooms without allowing people to walk between them.</description>
+        <costList>
+            <Steel>30</Steel>
+        </costList>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <placeWorkers>
+            <li>PlaceWorker_Vent</li>
+            <li>WallStuff.PlaceWorker_WallObject</li>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+        </placeWorkers>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <building>
+            <canPlaceOverWall>true</canPlaceOverWall>
+            <isEdifice>false</isEdifice>
+        </building>
+        <designationCategory>Temperature</designationCategory>
+        <clearBuildingArea>false</clearBuildingArea>
+        <designationHotKey>Misc4</designationHotKey>
     </ThingDef>
 
 </Defs>
-
