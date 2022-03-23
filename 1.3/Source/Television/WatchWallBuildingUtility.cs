@@ -25,7 +25,7 @@ namespace WallStuff
         public static bool CanWatchWallFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
             //jcLog.Warning.Warning("Pawn attempting to watch: " + pawn.Name);
-            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.Rotation))
+            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.def, toWatch.Rotation))
             {
                 //jcLog.Warning.Warning(pawn.Name + " Cannot watch from bed !");
                 return false;
@@ -82,43 +82,37 @@ namespace WallStuff
                 for (int j = 0; j < num; j++)
                 {
                     IntVec3 intVec2 = centerCell + GenRadial.RadialPattern[j];
-                    if (watchCellRect.Contains(intVec2))
+                    if (!watchCellRect.Contains(intVec2))
                     {
-                        bool flag = false;
-                        Building building = null;
-                        if (EverPossibleToWatchFrom(intVec2, toWatch.Position, toWatch.Map, false, toWatch.Rotation) && !intVec2.IsForbidden(pawn) && pawn.CanReserve(intVec2, 1, -1, null, false) && pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn, false))
+                        continue;
+                    }
+                    bool flag = false;
+                    Building building = null;
+                    if (EverPossibleToWatchFrom(intVec2, toWatch.Position, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation) && !intVec2.IsForbidden(pawn) && pawn.CanReserveSittableOrSpot(intVec2) && pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn))
+                    {
+                        if (desireSit)
                         {
-                            if (desireSit)
-                            {
-                                building = intVec2.GetEdifice(pawn.Map);
-                                if (building != null && building.def.building.isSittable && pawn.CanReserve(building, 1, -1, null, false))
-                                {
-                                    flag = true;
-                                }
-                            }
-                            else
+                            building = intVec2.GetEdifice(pawn.Map);
+                            if (building != null && building.def.building.isSittable && pawn.CanReserve(building))
                             {
                                 flag = true;
                             }
                         }
-                        if (flag)
+                        else
                         {
-                            if (desireSit)
-                            {
-                                Rot4 arg_15E_0 = building.Rotation;
-                                Rot4 rot = new Rot4(list[i]);
-                                if (arg_15E_0 != rot.Opposite)
-                                {
-                                    intVec = intVec2;
-                                    goto IL_17F;
-                                }
-                            }
+                            flag = true;
+                        }
+                    }
+                    if (flag)
+                    {
+                        if (!desireSit || !(building.Rotation != new Rot4(list[i]).Opposite))
+                        {
                             result = intVec2;
                             chair = building;
                             return true;
                         }
+                        intVec = intVec2;
                     }
-                    IL_17F:;
                 }
             }
             if (intVec.IsValid)
@@ -134,7 +128,7 @@ namespace WallStuff
 
         public static bool CanWatchFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
-            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.Rotation))
+            if (!EverPossibleToWatchFrom(pawn.Position, toWatch.Position, pawn.Map, true, toWatch.def, toWatch.Rotation))
             {
                 return false;
             }
@@ -171,10 +165,20 @@ namespace WallStuff
             return false;
         }
 
-        private static bool EverPossibleToWatchFrom(IntVec3 watchCell, IntVec3 buildingCenterWall, Map map, bool bedAllowed, Rot4 rot)
+        private static bool EverPossibleToWatchFrom(IntVec3 watchCell, IntVec3 buildingCenter, Map map, bool bedAllowed, ThingDef def, Rot4 rotation)
         {
-            IntVec3 buildingCenter = buildingCenterWall + IntVec3.North.RotatedBy(rot);
-            return (watchCell.Standable(map) || (bedAllowed && watchCell.GetEdifice(map) is Building_Bed)) && GenSight.LineOfSight(buildingCenter, watchCell, map, true, null, 0, 0);
+            IntVec3 actualWatchCell = watchCell + IntVec3.North.RotatedBy(rotation);
+
+            if (!actualWatchCell.InBounds(map))
+            {
+                return false;
+            }
+            Room room = ((def.building != null && def.building.watchBuildingInSameRoom) ? buildingCenter.GetRoom(map) : null);
+            if ((room == null || room.ContainsCell(actualWatchCell)) && (actualWatchCell.Standable(map) || (bedAllowed && actualWatchCell.GetEdifice(map) is Building_Bed)))
+            {
+                return GenSight.LineOfSight(buildingCenter, actualWatchCell, map, skipFirstCell: true);
+            }
+            return false;
         }
 
         private static List<int> CalculateAllowedDirections(ThingDef toWatchDef, Rot4 toWatchRot)

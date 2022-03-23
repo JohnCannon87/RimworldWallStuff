@@ -47,7 +47,7 @@
             <watchBuildingStandRectWidth>6</watchBuildingStandRectWidth>
         </building>
         <placeWorkers>
-            <li>WallStuff.PlaceWorker_WallMountedWatchArea</li>
+            <li>WallStuff.PlaceWorker_WallMountedWatchArea</li>            
             <li>WallStuff.PlaceWorker_WallObject</li>
             <li>WallStuff.PlaceWorker_WallChecker</li>
         </placeWorkers>
