@@ -49,7 +49,7 @@ namespace WallStuff
             base.Destroy( mode );
         }
 
-        public override void TickRare()
+        public override void Tick()
         {
             if (!Validate())
             {

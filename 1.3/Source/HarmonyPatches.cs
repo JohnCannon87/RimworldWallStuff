@@ -16,7 +16,7 @@ namespace WallStuff
             Harmony harmony = new Harmony("rimworld.arcjc.wallstuff");
 
             var originalLaunchThingsOfTypeMethod = typeof(TradeUtility).GetMethod("LaunchThingsOfType");
-            var patchedLaunchThingsOfTypeMethod = typeof(WallMountedTradeUtility).GetMethod("LaunchThingsOfType");            
+            var patchedLaunchThingsOfTypeMethod = typeof(WallMountedTradeUtility).GetMethod("LaunchThingsOfType");
 
             var originalAllLaunchableThingsForTradeMethod = typeof(TradeUtility).GetMethod("AllLaunchableThingsForTrade");
             var patchedAllLaunchableThingsForTradeMethod = typeof(WallMountedTradeUtility).GetMethod("AllLaunchableThingsForTrade");
@@ -27,6 +27,7 @@ namespace WallStuff
             harmony.Patch(originalLaunchThingsOfTypeMethod, postfix: new HarmonyMethod(patchedLaunchThingsOfTypeMethod));
             harmony.Patch(originalAllLaunchableThingsForTradeMethod, postfix: new HarmonyMethod(patchedAllLaunchableThingsForTradeMethod));
             harmony.Patch(originalAllPoweredMethod, postfix: new HarmonyMethod(patchedAllPoweredMethod));
+            harmony.PatchAll();
         }
 
     }

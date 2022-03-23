@@ -50,7 +50,7 @@
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <minifiedDef>MinifiedThing</minifiedDef>
-        <tickerType>Rare</tickerType>
+        <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
@@ -106,7 +106,7 @@
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <minifiedDef>MinifiedThing</minifiedDef>
-        <tickerType>Rare</tickerType>
+        <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
@@ -162,7 +162,7 @@
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
         <minifiedDef>MinifiedThing</minifiedDef>
-        <tickerType>Rare</tickerType>
+        <tickerType>Normal</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
         </researchPrerequisites>
