@@ -25,41 +25,41 @@ namespace WallStuff
         public static bool CanWatchWallFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
             var vecNorth = toWatch.Position + IntVec3.North.RotatedBy(toWatch.Rotation);
-            //jc//jcLog.Warning.Warning("Pawn attempting to watch: " + pawn.Name);
+            //jc//jc//jcLog.Warning.Warning("Pawn attempting to watch: " + pawn.Name);
             if (!EverPossibleToWatchFrom(pawn.Position, vecNorth, pawn.Map, true, toWatch.def, toWatch.Rotation))
             {
-                //jc//jcLog.Warning.Warning(pawn.Name + " Cannot watch from bed !");
+                //jc//jc//jcLog.Warning.Warning(pawn.Name + " Cannot watch from bed !");
                 return false;
             }
             if (toWatch.def.rotatable)
             {
-                //jc//jcLog.Warning.Warning(pawn.Name + " Thing is rotatable");
+                //jc//jc//jcLog.Warning.Warning(pawn.Name + " Thing is rotatable");
                 Rot4 rotation = bed.Rotation;
                 CellRect cellRect = GetCellRect(toWatch);
                 if (rotation == Rot4.North && cellRect.maxZ < pawn.Position.z)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not above tv !");
+                    //jc//jc//jcLog.Warning.Warning(pawn.Name + " Not above tv !");
                     return false;
                 }
                 if (rotation == Rot4.South && cellRect.minZ > pawn.Position.z)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not below tv !");
+                    //jc//jc//jcLog.Warning.Warning(pawn.Name + " Not below tv !");
                     return false;
                 }
                 if (rotation == Rot4.East && cellRect.maxX < pawn.Position.x)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not east of tv !");
+                    //jc//jc//jcLog.Warning.Warning(pawn.Name + " Not east of tv !");
                     return false;
                 }
                 if (rotation == Rot4.West && cellRect.minX > pawn.Position.x)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not west of tv !");
+                    //jc//jc//jcLog.Warning.Warning(pawn.Name + " Not west of tv !");
                     return false;
                 }
             }
-            //jc//jcLog.Warning.Warning(pawn.Name + " Calculating allowed directions");
+            //jc//jc//jcLog.Warning.Warning(pawn.Name + " Calculating allowed directions");
             List<int> list = CalculateAllowedDirections(toWatch.def, toWatch.Rotation);
-            //jc//jcLog.Warning.Warning(pawn.Name + " Found this many directions " + list.Count);
+            //jc//jc//jcLog.Warning.Warning(pawn.Name + " Found this many directions " + list.Count);
             for (int i = 0; i < list.Count; i++)
             {
                 if (GetWatchCellRect(toWatch.def, vecNorth, toWatch.Rotation, list[i]).Contains(pawn.Position))
@@ -77,8 +77,8 @@ namespace WallStuff
             for (int i = 0; i < list.Count; i++)
             {
                 var vecNorth = toWatch.Position + IntVec3.North.RotatedBy(toWatch.Rotation);
-                //jcLog.Warning("vecNorth: " + vecNorth);
-                //jcLog.Warning("toWatch.Position: " + toWatch.Position);
+                //jc//jcLog.Warning("vecNorth: " + vecNorth);
+                //jc//jcLog.Warning("toWatch.Position: " + toWatch.Position);
                 CellRect watchCellRect = GetWatchCellRect(toWatch.def, vecNorth, toWatch.Rotation, list[i]);
                 IntVec3 centerCell = watchCellRect.CenterCell;
                 int num = watchCellRect.Area * 4;
@@ -91,23 +91,23 @@ namespace WallStuff
                     }
                     bool flag = false;
                     Building building = null;
-                    //jcLog.Warning("Check if possible to sit in cell: " + intVec2);
-                    //jcLog.Warning("EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation); " + EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation));
-                    //jcLog.Warning("!intVec2.IsForbidden(pawn); " + !intVec2.IsForbidden(pawn));
-                    //jcLog.Warning("pawn.CanReserveSittableOrSpot(intVec2); " + pawn.CanReserveSittableOrSpot(intVec2));
-                    //jcLog.Warning("pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn); " + pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn));
+                    //jc//jcLog.Warning("Check if possible to sit in cell: " + intVec2);
+                    //jc//jcLog.Warning("EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation); " + EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation));
+                    //jc//jcLog.Warning("!intVec2.IsForbidden(pawn); " + !intVec2.IsForbidden(pawn));
+                    //jc//jcLog.Warning("pawn.CanReserveSittableOrSpot(intVec2); " + pawn.CanReserveSittableOrSpot(intVec2));
+                    //jc//jcLog.Warning("pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn); " + pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn));
                     if (EverPossibleToWatchFrom(intVec2, vecNorth, toWatch.Map, bedAllowed: false, toWatch.def, toWatch.Rotation) && !intVec2.IsForbidden(pawn) && pawn.CanReserveSittableOrSpot(intVec2) && pawn.Map.pawnDestinationReservationManager.CanReserve(intVec2, pawn))
                     {
                         if (desireSit)
                         {
-                            //jcLog.Warning("***** Checking If we can sit here");
+                            //jc//jcLog.Warning("***** Checking If we can sit here");
                             building = intVec2.GetEdifice(pawn.Map);
-                            //jcLog.Warning("building != null " + (building != null));
+                            //jc//jcLog.Warning("building != null " + (building != null));
                             if (building != null)
                             {
-                                //jcLog.Warning("Building Found is: " + building.def.defName);
-                                //jcLog.Warning("building.def.building.isSittable: " + building.def.building.isSittable);
-                                //jcLog.Warning("pawn.CanReserve(building): " + pawn.CanReserve(building));
+                                //jc//jcLog.Warning("Building Found is: " + building.def.defName);
+                                //jc//jcLog.Warning("building.def.building.isSittable: " + building.def.building.isSittable);
+                                //jc//jcLog.Warning("pawn.CanReserve(building): " + pawn.CanReserve(building));
                             }
                             if (building != null && building.def.building.isSittable && pawn.CanReserve(building))
                             {

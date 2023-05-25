@@ -15,12 +15,12 @@ namespace WallStuff.Television
     {    
         private static void Postfix(JoyGiver_WatchBuilding __instance, ref Job __result, Pawn pawn, Thing t)
         {
-            //jcLog.Warning(pawn.Name + " Checking If Ediface");
+            //jc//jcLog.Warning(pawn.Name + " Checking If Ediface");
             if (!t.def.building.isEdifice)
             {
                 IntVec3 c;
                 Building t2;
-                //jcLog.Warning(pawn.Name + " It's Not An Ediface");
+                //jc//jcLog.Warning(pawn.Name + " It's Not An Ediface");
                 if (!WatchWallBuildingUtility.TryFindBestWatchCell(t, pawn, __instance.def.desireSit, out c, out t2))
                 {
                     __result = null;
