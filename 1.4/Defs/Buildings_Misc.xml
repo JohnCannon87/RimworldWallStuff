@@ -59,7 +59,7 @@
       <li>WallStuff.PlaceWorker_WallChecker</li>
     </placeWorkers>
 
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <staticSunShadowHeight>0.35</staticSunShadowHeight>
@@ -84,7 +84,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallBeacon/WallBeacon_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsMisc</li>
@@ -143,7 +143,87 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallCommsConsole/WallCommsConsole_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>2200</WorkToBuild>
+      <Flammability>0.6</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Usable" MayRequire="Ludeon.RimWorld.Biotech">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Summon diabolus threat</useLabel>
+        <useDuration>900</useDuration>
+        <floatMenuOptionPriority>SummonThreat</floatMenuOptionPriority>
+        <floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
+        <ignoreOtherReservations>true</ignoreOtherReservations>
+      </li>
+      <li Class="CompProperties_Useable_CallBossgroup" MayRequire="Ludeon.RimWorld.Biotech">
+        <bossgroupDef>Diabolus</bossgroupDef>
+        <spawnLetterLabelKey>LetterLabelCommsConsoleSpawned</spawnLetterLabelKey>
+        <spawnLetterTextKey>LetterCommsConsoleSpawned</spawnLetterTextKey>
+        <effecterDef>CommsConsoleBossgroupSummoned</effecterDef>
+        <delayTicks>120</delayTicks>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+      <li>WallStuff</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType><!-- used by call bossgroup -->
+  </ThingDef>
+
+  
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedTradingTerminal</defName>
+    <label>wall mounted trading terminal</label>
+    <description>A terminal that allows contact with the bank, access to stock market, price overview and contracts, now wall mounted for your convenience !</description>
+    <thingClass>VanillaTradingExpanded.Building_TradingTerminal</thingClass>
+    <graphicData>
+      <texPath>WallTradeTerminal/WallTradeTerminal</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallTradeTerminal/WallTradeTerminal_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>

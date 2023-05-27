@@ -12,14 +12,18 @@ namespace WallStuff
         internal static List<ThingCountExposable> listOfSpawnableThings = null;
         internal static float heaterPower = 21f;
         internal static float coolerPower = -15f;
+        internal static int repairPowerUsage = 10;
+        internal static int repairRateHours = 120;
 
         public override void ExposeData()
         {
             base.ExposeData();
 
             Scribe_Collections.Look(ref listOfSpawnableThings, "listOfSpawnableThings");
-            Scribe_Values.Look(ref heaterPower, "heaterPower");
-            Scribe_Values.Look(ref coolerPower, "coolerPower");
+            Scribe_Values.Look(ref heaterPower, "heaterPower", 21f);
+            Scribe_Values.Look(ref coolerPower, "coolerPower", -15f);
+            Scribe_Values.Look(ref repairPowerUsage, "repairPowerUsage", 10);
+            Scribe_Values.Look(ref repairRateHours, "repairRateHours", 24);
 
             // Remove all null entries in the oreDictionary
             // This is most likely due to removing a mod, which will trigger a game reset

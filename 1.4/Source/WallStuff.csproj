@@ -86,8 +86,12 @@
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Paste\ThingListGroupHelper_Includes.cs" />
     <Compile Include="Power\WallBuilding_PowerSwitch.cs" />
     <Compile Include="Radio\ThoughtWorker_Hifi.cs" />
+    <Compile Include="Repair\PlaceWorker_Repair.cs" />
+    <Compile Include="Repair\WallMountedCompProperties_Repair.cs" />
+    <Compile Include="Repair\WallMountedCompRepair.cs" />
     <Compile Include="Replicator\WallMountedCompProperties_Spawner.cs" />
     <Compile Include="Replicator\WallMountedCompSpawner.cs" />
     <Compile Include="Television\FindBestGameHarmonyPatch.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Temperature\PlaceWorker_MediumCooler.cs" />
     <Compile Include="Temperature\PlaceWorker_MediumHeater.cs" />
     <Compile Include="Television\WatchWallBuildingUtility.cs" />
+    <Compile Include="Temperature\TemperatureControl.cs" />
     <Compile Include="Temperature\Wall_Building_Vent.cs" />
     <Compile Include="ThingCountExposable.cs" />
     <Compile Include="ThingDefOf.cs" />
@@ -132,7 +137,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

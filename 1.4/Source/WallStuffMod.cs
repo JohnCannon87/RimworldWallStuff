@@ -55,11 +55,25 @@ namespace WallStuff
 
             list.Begin(rect);
 
-            list.Label("Wall Heater Heating Power: " + WallStuffSettings.heaterPower);
+            string heaterPowerString = WallStuffSettings.heaterPower.ToString();
+            string coolerPowerString = WallStuffSettings.coolerPower.ToString();
+            string repairPowerUsageString = WallStuffSettings.repairPowerUsage.ToString();
+            string repairRateHoursString = WallStuffSettings.repairRateHours.ToString();
+
+            list.Label("Temperature Control Settings");
+            list.TextFieldNumericLabeled("Heating Power (1 - 100):", ref WallStuffSettings.heaterPower, ref heaterPowerString, 1, 100);
+            list.TextFieldNumericLabeled("Cooling Power (-100 - -1):", ref WallStuffSettings.coolerPower, ref coolerPowerString, -100, -1);
+            /*list.Label("Wall Heater Heating Power: " + WallStuffSettings.heaterPower);
             WallStuffSettings.heaterPower = list.Slider(WallStuffSettings.heaterPower, 0f, 100f).RoundToAsInt(1);
 
             list.Label("Wall Cooler Cooling Power: " + WallStuffSettings.coolerPower);
-            WallStuffSettings.coolerPower = list.Slider(WallStuffSettings.coolerPower, 0f, -100f).RoundToAsInt(1);
+            WallStuffSettings.coolerPower = list.Slider(WallStuffSettings.coolerPower, -100f, 0f).RoundToAsInt(1);*/
+
+            list.Gap(15);
+
+            list.Label("Nano Cloud Dispenser Settings:");
+            list.TextFieldNumericLabeled("Per Cell Power Usage (1 - 1000):", ref WallStuffSettings.repairPowerUsage, ref repairPowerUsageString, 1, 1000);
+            list.TextFieldNumericLabeled("Repair Rate in game hours to get to 100% from 0% (0 - 120):", ref WallStuffSettings.repairRateHours, ref repairRateHoursString, 0, 120);
 
             list.Gap(15);
             {

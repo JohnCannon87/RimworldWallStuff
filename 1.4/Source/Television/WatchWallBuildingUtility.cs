@@ -25,41 +25,41 @@ namespace WallStuff
         public static bool CanWatchWallFromBed(Pawn pawn, Building_Bed bed, Thing toWatch)
         {
             var vecNorth = toWatch.Position + IntVec3.North.RotatedBy(toWatch.Rotation);
-            //jc//jcLog.Warning.Warning("Pawn attempting to watch: " + pawn.Name);
+            //jcLog.Warning.Warning("Pawn attempting to watch: " + pawn.Name);
             if (!EverPossibleToWatchFrom(pawn.Position, vecNorth, pawn.Map, true, toWatch.def, toWatch.Rotation))
             {
-                //jc//jcLog.Warning.Warning(pawn.Name + " Cannot watch from bed !");
+                //jcLog.Warning.Warning(pawn.Name + " Cannot watch from bed !");
                 return false;
             }
             if (toWatch.def.rotatable)
             {
-                //jc//jcLog.Warning.Warning(pawn.Name + " Thing is rotatable");
+                //jcLog.Warning.Warning(pawn.Name + " Thing is rotatable");
                 Rot4 rotation = bed.Rotation;
                 CellRect cellRect = GetCellRect(toWatch);
                 if (rotation == Rot4.North && cellRect.maxZ < pawn.Position.z)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not above tv !");
+                    //jcLog.Warning.Warning(pawn.Name + " Not above tv !");
                     return false;
                 }
                 if (rotation == Rot4.South && cellRect.minZ > pawn.Position.z)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not below tv !");
+                    //jcLog.Warning.Warning(pawn.Name + " Not below tv !");
                     return false;
                 }
                 if (rotation == Rot4.East && cellRect.maxX < pawn.Position.x)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not east of tv !");
+                    //jcLog.Warning.Warning(pawn.Name + " Not east of tv !");
                     return false;
                 }
                 if (rotation == Rot4.West && cellRect.minX > pawn.Position.x)
                 {
-                    //jc//jcLog.Warning.Warning(pawn.Name + " Not west of tv !");
+                    //jcLog.Warning.Warning(pawn.Name + " Not west of tv !");
                     return false;
                 }
             }
-            //jc//jcLog.Warning.Warning(pawn.Name + " Calculating allowed directions");
+            //jcLog.Warning.Warning(pawn.Name + " Calculating allowed directions");
             List<int> list = CalculateAllowedDirections(toWatch.def, toWatch.Rotation);
-            //jc//jcLog.Warning.Warning(pawn.Name + " Found this many directions " + list.Count);
+            //jcLog.Warning.Warning(pawn.Name + " Found this many directions " + list.Count);
             for (int i = 0; i < list.Count; i++)
             {
                 if (GetWatchCellRect(toWatch.def, vecNorth, toWatch.Rotation, list[i]).Contains(pawn.Position))
@@ -79,7 +79,7 @@ namespace WallStuff
                 var vecNorth = toWatch.Position + IntVec3.North.RotatedBy(toWatch.Rotation);
                 //jcLog.Warning("vecNorth: " + vecNorth);
                 //jcLog.Warning("toWatch.Position: " + toWatch.Position);
-                CellRect watchCellRect = GetWatchCellRect(toWatch.def, vecNorth, toWatch.Rotation, list[i]);
+                CellRect watchCellRect = GetWatchCellRect(toWatch.def, toWatch.Position, toWatch.Rotation, list[i]);
                 IntVec3 centerCell = watchCellRect.CenterCell;
                 int num = watchCellRect.Area * 4;
                 for (int j = 0; j < num; j++)
