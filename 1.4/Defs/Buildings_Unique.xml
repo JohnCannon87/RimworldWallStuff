@@ -49,7 +49,7 @@
         <designationCategory>Production</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
         <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-        <altitudeLayer>PawnUnused</altitudeLayer>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <researchPrerequisites>
             <li>MatterToEnergyConversion</li>

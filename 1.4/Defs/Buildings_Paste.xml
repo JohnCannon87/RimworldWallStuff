@@ -11,7 +11,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallPaste/WallPasteTap_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>

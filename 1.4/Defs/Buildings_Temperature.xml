@@ -44,7 +44,7 @@
             <li>WallStuff.PlaceWorker_WallObject</li>
             <li>WallStuff.PlaceWorker_WallChecker</li>
         </placeWorkers>
-        <altitudeLayer>PawnUnused</altitudeLayer>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
@@ -53,6 +53,7 @@
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
+            <li>Electricity</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     </ThingDef>
@@ -100,7 +101,7 @@
             <li>WallStuff.PlaceWorker_WallObject</li>
             <li>WallStuff.PlaceWorker_WallChecker</li>
         </placeWorkers>
-        <altitudeLayer>PawnUnused</altitudeLayer>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
@@ -109,6 +110,7 @@
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
+            <li>AirConditioning</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     </ThingDef>
@@ -156,7 +158,7 @@
             <li>WallStuff.PlaceWorker_WallObject</li>
             <li>WallStuff.PlaceWorker_WallChecker</li>
         </placeWorkers>
-        <altitudeLayer>PawnUnused</altitudeLayer>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
@@ -165,6 +167,8 @@
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
             <li>WallStuff</li>
+            <li>Electricity</li>
+            <li>AirConditioning</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     </ThingDef>
@@ -184,7 +188,7 @@
             </damageData>
         </graphicData>
         <uiIconPath>WallVent/WallVent_UI</uiIconPath>
-        <altitudeLayer>BuildingOnTop</altitudeLayer>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <passability>Impassable</passability>
         <fillPercent>0.99</fillPercent>
         <coversFloor>true</coversFloor>

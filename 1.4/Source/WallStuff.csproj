@@ -89,6 +89,7 @@
     <Compile Include="Paste\ThingListGroupHelper_Includes.cs" />
     <Compile Include="Power\WallBuilding_PowerSwitch.cs" />
     <Compile Include="Radio\ThoughtWorker_Hifi.cs" />
+    <Compile Include="Repair\PlaceWorker_Repair.cs" />
     <Compile Include="Repair\WallMountedCompProperties_Repair.cs" />
     <Compile Include="Repair\WallMountedCompRepair.cs" />
     <Compile Include="Replicator\WallMountedCompProperties_Spawner.cs" />

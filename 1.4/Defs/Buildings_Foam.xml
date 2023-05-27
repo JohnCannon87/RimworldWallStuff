@@ -10,7 +10,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallFoam/WallFoamPopper_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsMisc</li>

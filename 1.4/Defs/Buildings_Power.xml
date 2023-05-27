@@ -12,7 +12,7 @@
       <drawSize>(1,1)</drawSize>
     </graphicData>
     <uiIconPath>WallBat/WallBat_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <fillPercent>0.99</fillPercent>
     <tickerType>Normal</tickerType>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -132,7 +132,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<size>(1, 1)</size>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<selectable>True</selectable>
 		<rotatable>True</rotatable>
@@ -160,7 +160,7 @@
       <allowWireConnection>false</allowWireConnection>
       <isEdifice>false</isEdifice>
     </building>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>Standable</passability>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <statBases>

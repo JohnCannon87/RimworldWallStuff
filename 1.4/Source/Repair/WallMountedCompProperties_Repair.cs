@@ -15,10 +15,6 @@ namespace WallStuff
 
         public string saveKeysPrefix;
 
-        public int NormalPowerUsage;
-
-        public int OverpowerUsage;
-
         public WallMountedCompProperties_Repair()
         {
             this.compClass = typeof(WallMountedCompRepair);

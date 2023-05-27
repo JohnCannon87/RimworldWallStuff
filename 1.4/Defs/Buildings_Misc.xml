@@ -59,7 +59,7 @@
       <li>WallStuff.PlaceWorker_WallChecker</li>
     </placeWorkers>
 
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <staticSunShadowHeight>0.35</staticSunShadowHeight>
@@ -84,7 +84,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallBeacon/WallBeacon_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsMisc</li>
@@ -143,7 +143,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallCommsConsole/WallCommsConsole_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
@@ -223,7 +223,7 @@
       <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <uiIconPath>WallTradeTerminal/WallTradeTerminal_UI</uiIconPath>
-    <altitudeLayer>PawnUnused</altitudeLayer>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
