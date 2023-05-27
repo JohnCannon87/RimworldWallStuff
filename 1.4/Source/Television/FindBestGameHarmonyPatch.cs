@@ -16,7 +16,7 @@ namespace WallStuff.Television
     {  
         private static void Postfix(JoyGiver_WatchBuilding __instance,  ref Thing __result, Pawn pawn, bool inBed, IntVec3 gatheringSpot)
         {
-            //jc//jcLog.Warning(pawn.Name + " Find Best");
+            //jcLog.Warning(pawn.Name + " Find Best");
             List<Thing>  tmpCandidates = new List<Thing>();
 
             MethodInfo methodInfoGetSearchSet = typeof(JoyGiver_InteractBuilding).GetMethod("GetSearchSet", BindingFlags.NonPublic | BindingFlags.Instance);

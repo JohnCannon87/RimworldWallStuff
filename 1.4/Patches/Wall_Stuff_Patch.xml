@@ -21,4 +21,24 @@
 		</nomatch>
 	</Operation>
 
+	<Operation Class="PatchOperationFindMod">
+		<success>Always</success>
+		<mods>
+			<li>Vanilla Trading Expanded</li>
+		</mods>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[defName = "WallMountedTradingTerminal"]</xpath>
+		</nomatch>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<success>Always</success>
+		<mods>
+			<li>Vanilla Nutrient Paste Expanded</li>
+		</mods>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[defName = "WallMountedNutrientPasteTap"]</xpath>
+		</nomatch>
+	</Operation>
+
 </Patch>

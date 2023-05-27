@@ -59,7 +59,7 @@ namespace WallStuff
             WallStuffSettings.heaterPower = list.Slider(WallStuffSettings.heaterPower, 0f, 100f).RoundToAsInt(1);
 
             list.Label("Wall Cooler Cooling Power: " + WallStuffSettings.coolerPower);
-            WallStuffSettings.coolerPower = list.Slider(WallStuffSettings.coolerPower, 0f, -100f).RoundToAsInt(1);
+            WallStuffSettings.coolerPower = list.Slider(WallStuffSettings.coolerPower, -100f, 0f).RoundToAsInt(1);
 
             list.Gap(15);
             {

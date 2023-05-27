@@ -6,13 +6,13 @@
         <label>nano cloud dispenser</label>
         <description>A small wall mounted nano cloud dispenser.</description>
         <graphicData>
-            <texPath>Replicator/Replicator</texPath>
+            <texPath>WallRepair/WallRepair</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
         <thingCategories>
             <li>BuildingsSpecial</li>
         </thingCategories>
-        <uiIconPath>Replicator/Replicator_UI</uiIconPath>
+        <uiIconPath>WallRepair/WallRepair_UI</uiIconPath>
         <costList>
             <Gold>250</Gold>
             <Plasteel>200</Plasteel>

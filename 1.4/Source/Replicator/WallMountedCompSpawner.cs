@@ -87,35 +87,26 @@ namespace WallStuff
 
         public bool TryDoSpawn()
         {
-            //jc//jcLog.Warning("TryDoSpawn");
             if (!this.parent.Spawned)
             {
-                //jc//jcLog.Warning("TryDoSpawn - 1");
                 return false;
             }
-            //jc//jcLog.Warning("TryDoSpawn - 2");
             if (this.WallMountedPropsSpawner.spawnMaxAdjacent >= 0)
             {
-                //jc//jcLog.Warning("TryDoSpawn - 3");
                 int num = 0;
                 for (int i = 0; i < 9; i++)
                 {
-                    //jc//jcLog.Warning("TryDoSpawn - For Loop: " + i);
                     IntVec3 c = this.parent.Position + GenAdj.AdjacentCellsAndInside[i];
                     if (c.InBounds(this.parent.Map))
                     {
-                        //jc//jcLog.Warning("TryDoSpawn - InBounds");
                         List<Thing> thingList = c.GetThingList(this.parent.Map);
                         for (int j = 0; j < thingList.Count; j++)
                         {
-                            //jc//jcLog.Warning("TryDoSpawn - For Loop 2: " + j);
                             if (thingList[j].def == this.thingToSpawn.thingDef)
                             {
-                                //jc//jcLog.Warning("TryDoSpawn - 4");
                                 num += thingList[j].stackCount;
                                 if (num >= this.WallMountedPropsSpawner.spawnMaxAdjacent)
                                 {
-                                    //jc//jcLog.Warning("TryDoSpawn - 5");
                                     return false;
                                 }
                             }
@@ -123,11 +114,9 @@ namespace WallStuff
                     }
                 }
             }
-            //jc//jcLog.Warning("TryDoSpawn - 6");
             IntVec3 center;
             if (this.TryFindSpawnCell(out center))
             {
-                //jc//jcLog.Warning("TryDoSpawn - TryFindSpawnCell");
                 Thing thing = ThingMaker.MakeThing(this.thingToSpawn.thingDef, null);
                 thing.stackCount = this.thingToSpawn.count;
                 if (this.WallMountedPropsSpawner.inheritFaction && thing.Faction != this.parent.Faction)
@@ -135,9 +124,7 @@ namespace WallStuff
                     thing.SetFaction(this.parent.Faction, null);
                 }
                 Thing t;
-                //jc//jcLog.Warning("TryDoSpawn - TryPlaceThing");
                 GenPlace.TryPlaceThing(thing, center, this.parent.Map, ThingPlaceMode.Direct, out t, null, null);
-                //jc//jcLog.Warning("TryDoSpawn - Placed Thing ??");
                 if (this.WallMountedPropsSpawner.spawnForbidden)
                 {
                     t.SetForbidden(true, true);
@@ -148,25 +135,18 @@ namespace WallStuff
                 }
                 return true;
             }
-            //jc//jcLog.Warning("TryDoSpawn - FAILED");
             return false;
         }
 
         private bool TryFindSpawnCell(out IntVec3 result)
         {
-            //jc//jcLog.Warning("TryFindSpawnCell");
             Rot4 thingRot = this.parent.Rotation;
             ///IntVec3 thingCent = this.parent.Position + IntVec3.North.RotatedBy(thingRot);
             IntVec3 thingCent = this.parent.Position;
             IntVec2 thingsSize = thingRot.FacingCell.ToIntVec2;
-            //jc//jcLog.Warning("TryFindSpawnCell - Center " + thingCent);
-            //jc//jcLog.Warning("TryFindSpawnCell - Rot " + thingRot);
-            //jc//jcLog.Warning("TryFindSpawnCell - Size " + thingsSize);
             IEnumerable<IntVec3> adjCells = GenAdj.CellsAdjacentAlongEdge(thingCent, thingRot, thingsSize, LinkDirections.Down);
-            //jc//jcLog.Warning("TryFindSpawnCell Cells Found - " + adjCells.Count());
 
             result = thingCent + IntVec3.North.RotatedBy(thingRot);
-            //jc//jcLog.Warning("TryFindSpawnCell - Spawn Cell ? " + result);
             return true;
         }
 

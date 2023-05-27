@@ -86,6 +86,7 @@
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Paste\ThingListGroupHelper_Includes.cs" />
     <Compile Include="Power\WallBuilding_PowerSwitch.cs" />
     <Compile Include="Radio\ThoughtWorker_Hifi.cs" />
     <Compile Include="Repair\WallMountedCompProperties_Repair.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Temperature\PlaceWorker_MediumCooler.cs" />
     <Compile Include="Temperature\PlaceWorker_MediumHeater.cs" />
     <Compile Include="Television\WatchWallBuildingUtility.cs" />
+    <Compile Include="Temperature\TemperatureControl.cs" />
     <Compile Include="Temperature\Wall_Building_Vent.cs" />
     <Compile Include="ThingCountExposable.cs" />
     <Compile Include="ThingDefOf.cs" />

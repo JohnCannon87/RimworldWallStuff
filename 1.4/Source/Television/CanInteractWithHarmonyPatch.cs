@@ -15,22 +15,22 @@ namespace WallStuff.Television
     {  
         private static void Postfix(JoyGiver_WatchBuilding __instance, ref bool __result, Pawn pawn, Thing t, bool inBed)
         {
-            //jc//jcLog.Warning("Can Pawn: " + pawn.Name + " Interact With Thing: " + t);
+            //jcLog.Warning("Can Pawn: " + pawn.Name + " Interact With Thing: " + t);
             if (!t.def.building.isEdifice)
             {
                 if (!CanInteractCheck(pawn, t, inBed, __instance))
                 {
-                    //jc//jcLog.Warning(pawn.Name + " No :(");
+                    //jcLog.Warning(pawn.Name + " No :(");
                     __result = false;
                     return;
                 }
 
                 if (inBed)
                 {
-                    //jc//jcLog.Warning(pawn.Name + " In Bed");
+                    //jcLog.Warning(pawn.Name + " In Bed");
                     Building_Bed bed = pawn.CurrentBed();
 
-                    //jc//jcLog.Warning(pawn.Name + " is ediface");
+                    //jcLog.Warning(pawn.Name + " is ediface");
                     __result = WatchWallBuildingUtility.CanWatchFromBed(pawn, bed, t);
                     return;
                 }
@@ -42,22 +42,22 @@ namespace WallStuff.Television
 
         private static bool CanInteractCheck(Pawn pawn, Thing t, bool inBed, JoyGiver_WatchBuilding parent)// Need
         {
-            //jc//jcLog.Warning(pawn.Name + " Can Pawn reserve thing ?");
+            //jcLog.Warning(pawn.Name + " Can Pawn reserve thing ?");
             if (!pawn.CanReserve(t, parent.def.jobDef.joyMaxParticipants, -1, null, false))
             {
                 return false;
             }
-            //jc//jcLog.Warning(pawn.Name + " Is thing forbidden ?");
+            //jcLog.Warning(pawn.Name + " Is thing forbidden ?");
             if (t.IsForbidden(pawn))
             {
                 return false;
             }
-            //jc//jcLog.Warning(pawn.Name + " Is it socially proper ?");
+            //jcLog.Warning(pawn.Name + " Is it socially proper ?");
             if (!t.IsSociallyProper(pawn))
             {
                 return false;
             }
-            //jc//jcLog.Warning(pawn.Name + " Politically ?");
+            //jcLog.Warning(pawn.Name + " Politically ?");
             if (!t.IsPoliticallyProper(pawn))
             {
                 return false;

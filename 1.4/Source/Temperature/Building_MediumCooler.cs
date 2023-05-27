@@ -2,44 +2,19 @@
 using UnityEngine;
 using Verse;
 using WallStuff;
+using WallStuff.Temperature;
 
 namespace WallStuff
 {
     public class Building_MediumCooler : Building_TempControl, IWallAttachable
     {
-        private IntVec3 vecNorth;
-        private Room roomNorth;
-        private bool isWorking;
-
-        private bool WorkingState
-        {
-            get { return isWorking; }
-            set
-            {
-                isWorking = value;
-
-                if (compPowerTrader == null || compTempControl == null)
-                {
-                    return;
-                }
-                if (isWorking)
-                {
-                    compPowerTrader.PowerOutput = 0f - compPowerTrader.Props.PowerConsumption;
-                }
-                else
-                {
-                    compPowerTrader.PowerOutput = 0f - (compPowerTrader.Props.PowerConsumption *
-                                                  compTempControl.Props.lowPowerConsumptionFactor);
-                }
-
-                compTempControl.operatingAtHighPower = isWorking;
-            }
-        }
+        private IntVec3 vecFacing;
+        private Room roomFacing;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            vecNorth = Position + IntVec3.North.RotatedBy(Rotation);
+            vecFacing = Position + IntVec3.North.RotatedBy(Rotation);
         }
 
         public override void Destroy( DestroyMode mode = DestroyMode.Vanish )
@@ -47,26 +22,22 @@ namespace WallStuff
             base.Destroy( mode );
         }
 
-        public override void Tick()
+        public override void TickRare()
         {
-            if (!Validate())
-            {
-                WorkingState = false;
-                return;
-            }
+            if (!Validate()) return;
 
             ControlTemperature();
         }
 
         protected virtual bool Validate()
         {
-            if (vecNorth.Impassable(this.Map))
+            if (vecFacing.Impassable(this.Map))
             {
                 return false;
             }
 
-            roomNorth = vecNorth.GetRoom(this.Map);
-            if (roomNorth == null)
+            roomFacing = vecFacing.GetRoom(this.Map);
+            if (roomFacing == null)
             {
                 return false;
             }
@@ -76,32 +47,7 @@ namespace WallStuff
 
         private void ControlTemperature()
         {
-            var temperature = roomNorth.Temperature;
-            float energyMod;
-            if (temperature > -20f)
-            {
-                energyMod = 1f;
-            }
-            else
-            {
-                energyMod = temperature < -40f
-                    ? 0f
-                    : Mathf.InverseLerp( -20f, -40f, temperature );
-            }
-            var energyLimit = WallStuffSettings.coolerPower*energyMod*4.16666651f;
-            var hotAir = GenTemperature.ControlTemperatureTempChange( vecNorth, this.Map, energyLimit,
-                                                                      compTempControl.targetTemperature );
-
-            var hotIsHot = !Mathf.Approximately( hotAir, 0f );
-            if (hotIsHot)
-            {
-                roomNorth.Temperature += hotAir;
-                WorkingState = true;
-            }
-            else
-            {
-                WorkingState = false;
-            }
+            TemperatureControl.CoolRoom(roomFacing, vecFacing, base.Map, compTempControl, compPowerTrader);
         }
     }
 }
