@@ -216,6 +216,8 @@ namespace WallStuff
 
         public override string CompInspectStringExtra()
         {
+            if (this.parent.ParentHolder is MinifiedThing) return "";
+
             if (RoomFacing().UsesOutdoorTemperature)
             {
                 return errorString;
