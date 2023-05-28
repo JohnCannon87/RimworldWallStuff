@@ -139,7 +139,6 @@ namespace WallStuff
             if(pawn.apparel != null && pawn.apparel.WornApparel != null)
             {
                 List<Apparel> pawnApparel = pawn.apparel.WornApparel;
-
                 //Repair all apparel
                 foreach (Apparel apparel in pawnApparel)
                 {
@@ -167,12 +166,8 @@ namespace WallStuff
         {
             if(thing.HitPoints < thing.MaxHitPoints)
             {
-                int repairRateForThing = (int)Math.Round(thing.MaxHitPoints / 100 * this.GetRepairRate());
+                int repairRateForThing = Math.Max(1, (int)Math.Round(thing.MaxHitPoints / 100f * this.GetRepairRate()));// Use Math.max to ensure we're always adding at least 1 HP
                 thing.HitPoints = Math.Min(thing.MaxHitPoints, thing.HitPoints + repairRateForThing);
-
-                Vector3 position = thing.Position.ToVector3();
-
-                FleckMaker.ThrowMicroSparks(position, this.parent.Map);
             }            
         }
 
