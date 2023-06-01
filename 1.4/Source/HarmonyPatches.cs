@@ -24,9 +24,13 @@ namespace WallStuff
             var originalAllPoweredMethod = typeof(Building_OrbitalTradeBeacon).GetMethod("AllPowered");
             var patchedAllPoweredMethod = typeof(WallTradeBeacon).GetMethod("AllPoweredHarmonyPatch");
 
+            var originalConnectedBlackboards = typeof(LearningUtility).GetMethod("ConnectedBlackboards");
+            var patchedConnectedBlackboards = typeof(Blackboard_Patches).GetMethod("ConnectedBlackboardsHarmonyPatch");
+
             harmony.Patch(originalLaunchThingsOfTypeMethod, postfix: new HarmonyMethod(patchedLaunchThingsOfTypeMethod));
             harmony.Patch(originalAllLaunchableThingsForTradeMethod, postfix: new HarmonyMethod(patchedAllLaunchableThingsForTradeMethod));
             harmony.Patch(originalAllPoweredMethod, postfix: new HarmonyMethod(patchedAllPoweredMethod));
+            harmony.Patch(originalConnectedBlackboards, postfix: new HarmonyMethod(patchedConnectedBlackboards));
             harmony.PatchAll();
         }
 
