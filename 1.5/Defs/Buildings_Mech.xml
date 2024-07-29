@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="WallBuildingBase">
+        <defName>WallMountedMechBooster</defName>
+        <label>wall mounted mech booster</label>
+        <description>A wall mounted remote energy and computation enhancement device. Any friendly mechanoids in its effect radius will move and work faster.</description>
+        <graphicData>
+            <texPath>WallMechBooster/WallMechBooster</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+        </graphicData>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <uiIconPath>WallMechBooster/WallMechBooster_UI</uiIconPath>
+        <costList>
+            <Steel>100</Steel>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <building>
+            <isEdifice>false</isEdifice>
+        </building>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <WorkToBuild>8000</WorkToBuild>
+            <Mass>25</Mass>
+            <Flammability>0.5</Flammability>
+        </statBases>
+        <tickerType>Normal</tickerType>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>200</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_CauseHediff_AoE">
+                <range>9.9</range>
+                <onlyTargetMechs>true</onlyTargetMechs>
+                <hediff>MechBoost</hediff>
+                <activeSound>MechBooster_Working</activeSound>
+            </li>
+            <li Class="CompProperties_Flickable"/>
+        </comps>
+        <placeWorkers>
+            <li>WallStuff.PlaceWorker_WallChecker</li>
+            <li>PlaceWorker_ShowCauseHediffAoE</li>
+        </placeWorkers>
+        <clearBuildingArea>false</clearBuildingArea>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <altitudeLayer>BuildingBelowTop</altitudeLayer>
+        <castEdgeShadows>false</castEdgeShadows>
+        <researchPrerequisites>
+            <li>HighMechtech</li>
+        </researchPrerequisites>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <passability>Impassable</passability>
+        <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+        <designationCategory>Biotech</designationCategory>
+        <uiOrder>2420</uiOrder>
+    </ThingDef>
+
+</Defs>
