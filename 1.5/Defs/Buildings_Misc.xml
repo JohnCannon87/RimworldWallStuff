@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-<ThingDef ParentName="WallBuildingBase">
+  <ThingDef ParentName="WallBuildingBase">
     <defName>WallToolBoard</defName>
     <label>wall mounted tool board</label>
     <description>Increases work speed when placed near a workbench. One workbench use to up to two tool boards.</description>
@@ -38,7 +38,7 @@
     <thingCategories>
       <li>BuildingsMisc</li>
     </thingCategories>
-    
+
     <stuffCategories>
       <li>Woody</li>
       <li>Metallic</li>
@@ -72,10 +72,10 @@
     <minifiedDef>MinifiedThing</minifiedDef>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
-    
+
   </ThingDef>
 
-<ThingDef ParentName="WallBuildingBase">
+  <ThingDef ParentName="WallBuildingBase">
     <defName>WallMountedOrbitalTradeBeacon</defName>
     <label>wall mounted orbital trade beacon</label>
     <thingClass>WallStuff.WallTradeBeacon</thingClass>
@@ -208,71 +208,7 @@
       <li>WallStuff</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType><!-- used by call bossgroup -->
+    <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType>    <!-- used by call bossgroup -->
   </ThingDef>
 
-  
-
-  <ThingDef ParentName="WallBuildingBase">
-    <defName>WallMountedTradingTerminal</defName>
-    <label>wall mounted trading terminal</label>
-    <description>A terminal that allows contact with the bank, access to stock market, price overview and contracts, now wall mounted for your convenience !</description>
-    <thingClass>VanillaTradingExpanded.Building_TradingTerminal</thingClass>
-    <graphicData>
-      <texPath>WallTradeTerminal/WallTradeTerminal</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-    </graphicData>
-    <uiIconPath>WallTradeTerminal/WallTradeTerminal_UI</uiIconPath>
-    <altitudeLayer>BuildingBelowTop</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
-    <pathCost>50</pathCost>
-    <blockWind>true</blockWind>
-    <castEdgeShadows>false</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
-    <canOverlapZones>false</canOverlapZones>
-    <statBases>
-      <MaxHitPoints>250</MaxHitPoints>
-      <WorkToBuild>2200</WorkToBuild>
-      <Flammability>0.6</Flammability>
-      <Mass>5</Mass>
-    </statBases>
-    <size>(1,1)</size>
-    <building>
-      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
-      <isEdifice>false</isEdifice>
-    </building>
-    <costList>
-      <Steel>120</Steel>
-      <ComponentIndustrial>4</ComponentIndustrial>
-    </costList>
-    <defaultPlacingRot>South</defaultPlacingRot>
-    <interactionCellOffset>(0,0,1)</interactionCellOffset>
-    <hasInteractionCell>true</hasInteractionCell>
-    <designationCategory>Misc</designationCategory>
-    <clearBuildingArea>false</clearBuildingArea>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <shortCircuitInRain>true</shortCircuitInRain>
-        <basePowerConsumption>200</basePowerConsumption>
-      </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
-    </comps>
-    <placeWorkers>
-      <li>WallStuff.PlaceWorker_WallObject</li>
-      <li>WallStuff.PlaceWorker_WallChecker</li>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>MicroelectronicsBasics</li>
-      <li>WallStuff</li>
-    </researchPrerequisites>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-  </ThingDef>
-
-  </Defs>
+</Defs>

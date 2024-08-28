@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-<ThingDef ParentName="WallBuildingBase">
+<ThingDef MayRequire="Ludeon.RimWorld.Biotech" ParentName="WallBuildingBase">
     <defName>WallMountedBlackboard</defName>
     <label>wall mounted blackboard</label>
     <description>A flat stone-like surface for writing on with chalk. Placed near a lesson desk, blackboards increase childrens' learning rate during lessons. Up to three blackboards can be used at a time, wall mounted using sturdy hooks, handy !</description>

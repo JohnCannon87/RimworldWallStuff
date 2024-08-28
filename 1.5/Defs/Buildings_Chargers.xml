@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <ThingDef ParentName="BaseMechCharger">
+  <ThingDef MayRequire="Ludeon.RimWorld.Biotech" ParentName="BaseMechCharger">
     <defName>wallcharger</defName>
     <label>wall recharger</label>
     <description>a miniturised mech charger designed to be mounted into a wall, due to it's smaller size can only hold two wastpacks before it requires emptying, only the charging prongs and port are visible.</description>
@@ -71,7 +71,7 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="BaseMechCharger">
+  <ThingDef MayRequire="Ludeon.RimWorld.Biotech" ParentName="BaseMechCharger">
     <defName>largewallcharger</defName>
     <label>large wall recharger</label>
     <description>a miniturised mech charger designed to be mounted into a wall and utilizing advanced miniturisation technology to now charge larger mechanoids, due to it's smaller size can only hold two wastpacks before it requires emptying, only the charging prongs and port are visible.</description>
@@ -144,7 +144,7 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="BaseMechCharger">
+  <ThingDef MayRequire="Ludeon.RimWorld.Biotech" ParentName="BaseMechCharger">
     <defName>ultrawallcharger</defName>
     <label>ultra wall recharger</label>
     <description>the ultimate in mech charging miniaturisation, charges all mechanoids and with a new compressor stores three wastepacks instead of 2 !</description>
