@@ -249,6 +249,7 @@
     <interactionCellOffset>(0,0,1)</interactionCellOffset>
     <interactionCellIcon>DiningChair</interactionCellIcon>
     <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellIconReverse>true</interactionCellIconReverse>
     <designationCategory>Misc</designationCategory>
     <clearBuildingArea>false</clearBuildingArea>
     <comps>
@@ -318,6 +319,7 @@
     <interactionCellOffset>(0,0,1)</interactionCellOffset>
     <interactionCellIcon>DiningChair</interactionCellIcon>
     <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellIconReverse>true</interactionCellIconReverse>
     <designationCategory>Misc</designationCategory>
     <clearBuildingArea>false</clearBuildingArea>
     <comps>
