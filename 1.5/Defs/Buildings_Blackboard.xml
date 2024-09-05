@@ -34,7 +34,6 @@
     </statBases>
     <size>(2,1)</size>
     <researchPrerequisites>
-      <li>WallStuff</li>
       <li>ComplexFurniture</li>
     </researchPrerequisites>
     <costStuffCount>15</costStuffCount>

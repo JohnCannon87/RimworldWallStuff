@@ -68,7 +68,6 @@
                 </placeWorkers>
                 <researchPrerequisites>
                     <li>MicroelectronicsBasics</li>
-                    <li>WallStuff</li>
                 </researchPrerequisites>
                 <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
                 </ThingDef>

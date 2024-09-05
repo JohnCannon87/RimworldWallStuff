@@ -52,7 +52,6 @@
         <minifiedDef>MinifiedThing</minifiedDef>
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
-            <li>WallStuff</li>
             <li>Electricity</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
@@ -109,7 +108,6 @@
         <minifiedDef>MinifiedThing</minifiedDef>
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
-            <li>WallStuff</li>
             <li>AirConditioning</li>
         </researchPrerequisites>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
@@ -166,7 +164,6 @@
         <minifiedDef>MinifiedThing</minifiedDef>
         <tickerType>Rare</tickerType>
         <researchPrerequisites>
-            <li>WallStuff</li>
             <li>Electricity</li>
             <li>AirConditioning</li>
         </researchPrerequisites>

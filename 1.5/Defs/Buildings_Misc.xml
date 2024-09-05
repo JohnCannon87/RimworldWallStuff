@@ -129,7 +129,6 @@
     </placeWorkers>
     <researchPrerequisites>
       <li>MicroelectronicsBasics</li>
-      <li>WallStuff</li>
     </researchPrerequisites>
   </ThingDef>
 
@@ -205,10 +204,147 @@
     </placeWorkers>
     <researchPrerequisites>
       <li>MicroelectronicsBasics</li>
-      <li>WallStuff</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType>    <!-- used by call bossgroup -->
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedGroundPenetratingScanner</defName>
+    <label>wall mounted ground-penetrating scanner</label>
+    <description>A sensor unit used by researchers to search for buried resources. The chance to find a resource depends on the operator's research ability. It consumes a lot of electricity. If you find a buried resource, you'll need to use deep drills to extract it. It doesn't work under a roof, now wall mounted for your convenience !</description>
+    <graphicData>
+      <texPath>WallGroundScanner/WallGroundScanner</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallGroundScanner/WallGroundScanner_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <hasInteractionCell>true</hasInteractionCell>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_ScannerMineralsDeep">
+        <scanSpeedStat>ResearchSpeed</scanSpeedStat>
+        <scanFindMtbDays>3</scanFindMtbDays>
+        <scanFindGuaranteedDays>6</scanFindGuaranteedDays>
+        <soundWorking>ScannerGroundPenetrating_Ambience</soundWorking>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>GroundPenetratingScanner</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedLongRangeMineralScanner</defName>
+    <label>wall mounted long-range mineral scanner</label>
+    <description>A lateral sensor unit used by researchers to detect a specific type of mineral across the planet. The chance to find a resource depends on the operator's research ability. This sensor can be tuned to target a specific resource type. It consumes a lot of electricity. If you find a resource, you'll need to travel to collect it, now wall mounted for your convenience !</description>
+    <graphicData>
+      <texPath>WallLongRangeMineralScanner/WallLongRangeMineralScanner</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallLongRangeMineralScanner/WallLongRangeMineralScanner_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>10000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>200</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <hasInteractionCell>true</hasInteractionCell>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_LongRangeMineralScanner">
+        <scanSpeedStat>ResearchSpeed</scanSpeedStat>
+        <scanFindMtbDays>4</scanFindMtbDays>
+        <scanFindGuaranteedDays>8</scanFindGuaranteedDays>
+        <soundWorking>ScannerLongRangeMineral_Ambience</soundWorking>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>LongRangeMineralScanner</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
   </ThingDef>
 
 </Defs>

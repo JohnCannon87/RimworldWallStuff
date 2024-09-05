@@ -52,7 +52,7 @@
         <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <researchPrerequisites>
-            <li>MatterToEnergyConversion</li>
+            <li>AdvancedFabrication</li>
         </researchPrerequisites>
         <minifiedDef>MinifiedThing</minifiedDef>
         <passability>Impassable</passability>

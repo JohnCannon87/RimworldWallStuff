@@ -70,7 +70,6 @@
                 </placeWorkers>
                 <researchPrerequisites>
                 <li>MicroelectronicsBasics</li>
-                <li>WallStuff</li>
                 </researchPrerequisites>
                     <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
             </ThingDef>

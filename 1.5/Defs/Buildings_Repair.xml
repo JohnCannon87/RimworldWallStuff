@@ -49,7 +49,6 @@
         <altitudeLayer>BuildingBelowTop</altitudeLayer>
         <castEdgeShadows>false</castEdgeShadows>
         <researchPrerequisites>
-            <li>WallStuff</li>
             <li>MicroelectronicsBasics</li>
         </researchPrerequisites>
         <minifiedDef>MinifiedThing</minifiedDef>

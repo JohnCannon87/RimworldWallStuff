@@ -49,7 +49,6 @@
     </costList>
     <researchPrerequisites>
       <li>BasicMechtech</li>
-      <li>WallStuff</li>
     </researchPrerequisites>
     <placeWorkers>
       <li>WallStuff.PlaceWorker_WallObject</li>
@@ -122,7 +121,6 @@
     </costList>
     <researchPrerequisites>
       <li>StandardMechtech</li>
-      <li>WallStuff</li>
     </researchPrerequisites>
     <placeWorkers>
       <li>WallStuff.PlaceWorker_WallObject</li>
@@ -196,7 +194,6 @@
     </costList>
     <researchPrerequisites>
       <li>StandardMechtech</li>
-      <li>WallStuff</li>
     </researchPrerequisites>
     <placeWorkers>
       <li>WallStuff.PlaceWorker_WallObject</li>

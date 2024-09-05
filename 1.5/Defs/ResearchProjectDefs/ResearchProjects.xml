@@ -10,8 +10,8 @@
 		<tab>WallStuffTab</tab>
 		<defName>WallStuff</defName>
 		<label>Wall Mountable Stuff</label>
-		<description>Stuff for Walls.</description>
-		<baseCost>500</baseCost>
+		<description>No Longer needed, just left for now so it doesn't cause errors.</description>
+		<baseCost>1</baseCost>
 		<techLevel>Spacer</techLevel>
 		<researchViewX>0</researchViewX>
 		<researchViewY>0</researchViewY>
@@ -21,8 +21,8 @@
 		<tab>WallStuffTab</tab>
 		<defName>MatterToEnergyConversion</defName>
 		<label>Energy To Matter Conversion</label>
-		<description>Energy To Matter Conversion, allows the production of replicators which use large amounts of energy to produce small quantities of items.</description>
-		<baseCost>8000</baseCost>
+		<description>No Longer needed, just left for now so it doesn't cause errors.</description>
+		<baseCost>1</baseCost>
 		<techLevel>Spacer</techLevel>
     	<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 		<requiredResearchFacilities>

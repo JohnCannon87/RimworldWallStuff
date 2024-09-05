@@ -54,7 +54,6 @@
     <canOverlapZones>false</canOverlapZones>
     <researchPrerequisites>
       <li>Batteries</li>
-      <li>WallStuff</li>
     </researchPrerequisites>    
     <placeWorkers>
         <li>WallStuff.PlaceWorker_WallObject</li>
