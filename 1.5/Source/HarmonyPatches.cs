@@ -31,6 +31,7 @@ namespace WallStuff
             harmony.Patch(originalAllLaunchableThingsForTradeMethod, postfix: new HarmonyMethod(patchedAllLaunchableThingsForTradeMethod));
             harmony.Patch(originalAllPoweredMethod, postfix: new HarmonyMethod(patchedAllPoweredMethod));
             harmony.Patch(originalConnectedBlackboards, postfix: new HarmonyMethod(patchedConnectedBlackboards));
+
             harmony.PatchAll();
         }
 

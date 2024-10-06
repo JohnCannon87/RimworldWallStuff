@@ -349,4 +349,68 @@
     <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
   </ThingDef>
 
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedMultiAnalyzer</defName>
+    <label>wall mounted multi analyzer</label>
+    <graphicData>
+      <texPath>WallMultiAnalyzer/WallMultiAnalyzer</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallMultiAnalyzer/WallMultiAnalyzer_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <description>Increases research speed when placed near hi-tech research bench and unlocks new research projects. Each research bench can only use one multi-analyzer, now wall mounted for your convenience.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <passability>Impassable</passability>
+    <fillPercent>0.99</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <costList>
+      <Steel>40</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>20</Gold>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>0.1</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <rotatable>true</rotatable>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_ShowWallMountedTradeBeaconRadius</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+  </ThingDef>
+
 </Defs>

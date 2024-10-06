@@ -99,6 +99,7 @@
     <Compile Include="Repair\WallMountedCompRepair.cs" />
     <Compile Include="Replicator\WallMountedCompProperties_Spawner.cs" />
     <Compile Include="Replicator\WallMountedCompSpawner.cs" />
+    <Compile Include="SuperCharger\SuperChargerPatch.cs" />
     <Compile Include="Television\FindBestGameHarmonyPatch.cs" />
     <Compile Include="Television\CanInteractWithHarmonyPatch.cs" />
     <Compile Include="Television\TryGivePlayJobHarmonyPatch.cs" />
@@ -142,7 +143,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
