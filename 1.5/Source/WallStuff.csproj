@@ -91,6 +91,7 @@
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="MultiAnalyzer\MultiAnalyzerPatchApplier.cs" />
     <Compile Include="Paste\ThingListGroupHelper_Includes.cs" />
     <Compile Include="Power\WallBuilding_PowerSwitch.cs" />
     <Compile Include="Radio\ThoughtWorker_Hifi.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="WallStuff\PlaceWorker_WallChecker.cs" />
     <Compile Include="WallStuff\PlaceWorker_WallObject.cs" />
     <Compile Include="ResourceBank.cs" />
+    <Compile Include="WallStuff\WallStuffPatchSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -143,7 +145,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

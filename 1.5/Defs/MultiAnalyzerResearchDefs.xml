@@ -1,0 +1,7 @@
+<!-- MultiAnalyzerResearchDefs.xml -->
+<Defs>
+  <WallStuffPatchSettings>
+    <defName>EnableMultiAnalyzerResearchPatch</defName>
+    <isEnabled>true</isEnabled>
+  </WallStuffPatchSettings>
+</Defs>

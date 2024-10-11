@@ -55,6 +55,8 @@ namespace WallStuff
 
             list.Begin(rect);
 
+            list.CheckboxLabeled("Enable Patch to allow Wall Mounted MultiAnalyzer to work as a requirement for research needing the multi analyzer, this overwrites the normal multi analyzer requirement.", ref WallStuffSettings.enableMultiAnalyzerResearchPatch, "Enable or disable the patch.");
+
             string heaterPowerString = WallStuffSettings.heaterPower.ToString();
             string coolerPowerString = WallStuffSettings.coolerPower.ToString();
             string repairPowerUsageString = WallStuffSettings.repairPowerUsage.ToString();

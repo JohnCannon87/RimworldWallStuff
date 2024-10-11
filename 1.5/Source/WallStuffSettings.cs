@@ -14,6 +14,7 @@ namespace WallStuff
         internal static float coolerPower = -15f;
         internal static int repairPowerUsage = 10;
         internal static int repairRateHours = 120;
+        internal static bool enableMultiAnalyzerResearchPatch = true;
 
         public override void ExposeData()
         {
@@ -24,6 +25,7 @@ namespace WallStuff
             Scribe_Values.Look(ref coolerPower, "coolerPower", -15f);
             Scribe_Values.Look(ref repairPowerUsage, "repairPowerUsage", 10);
             Scribe_Values.Look(ref repairRateHours, "repairRateHours", 24);
+            Scribe_Values.Look(ref enableMultiAnalyzerResearchPatch, "enableMultiAnalyzerResearchPatch", true);
 
             // Remove all null entries in the oreDictionary
             // This is most likely due to removing a mod, which will trigger a game reset
@@ -44,6 +46,15 @@ namespace WallStuff
                 }
                 listOfSpawnableThings = dict;
             }
+        }
+
+        private void UpdatePatchDef()
+        {
+            // Get the patch setting def
+            WallStuffPatchSettings patchSettingDef = DefDatabase<WallStuffPatchSettings>.GetNamed("EnableMultiAnalyzerResearchPatch");
+
+            // Set the value based on the setting
+            patchSettingDef.isEnabled = enableMultiAnalyzerResearchPatch;
         }
     }
 }
