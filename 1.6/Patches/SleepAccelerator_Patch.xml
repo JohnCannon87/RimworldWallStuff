@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[
+      @ParentName="BedBase" or
+      @ParentName="BedWithQualityBase" or
+      @ParentName="ArtableBedBase" or
+      @ParentName="SansComfortBedBase" or
+      @ParentName="BasicBedBase"
+      ]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <value>
+      <li MayRequire="Ludeon.RimWorld.Ideology">WallMountableSleepAccelerator</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/MemeDef[defName="Transhumanist"]/addDesignators</xpath>
+    <value>
+      <li>WallMountableSleepAccelerator</li>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchTabDef>
+		<defName>WallStuffTab</defName>
+		<label>WallStuff</label>
+	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<tab>WallStuffTab</tab>
+		<defName>WallStuff</defName>
+		<label>Wall Mountable Stuff</label>
+		<description>No Longer needed, just left for now so it doesn't cause errors.</description>
+		<baseCost>1</baseCost>
+		<techLevel>Spacer</techLevel>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<tab>WallStuffTab</tab>
+		<defName>MatterToEnergyConversion</defName>
+		<label>Energy To Matter Conversion</label>
+		<description>No Longer needed, just left for now so it doesn't cause errors.</description>
+		<baseCost>1</baseCost>
+		<techLevel>Spacer</techLevel>
+    	<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<prerequisites>
+			<li>WallStuff</li>
+		</prerequisites>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+</Defs>

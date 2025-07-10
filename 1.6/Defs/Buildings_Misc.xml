@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallToolBoard</defName>
+    <label>wall mounted tool board</label>
+    <description>Increases work speed when placed near a workbench. One workbench use to up to two tool boards.</description>
+
+    <graphicData>
+      <texPath>WallToolBoard/WallToolBoard</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,1)</drawSize>
+    </graphicData>
+    <uiIconPath>WallToolBoard/WallToolBoard_UI</uiIconPath>
+
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.5</Flammability>
+    </statBases>
+
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+
+    <costStuffCount>180</costStuffCount>
+
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Metallic</li>
+    </stuffCategories>
+
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.06</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>2</maxSimultaneous>
+      </li>
+    </comps>
+
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.99</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>42</pathCost>
+    <size>(2,1)</size>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
+
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedOrbitalTradeBeacon</defName>
+    <label>wall mounted orbital trade beacon</label>
+    <thingClass>WallStuff.WallTradeBeacon</thingClass>
+    <graphicData>
+      <texPath>WallBeacon/WallBeacon</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallBeacon/WallBeacon_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <description>Wallmounted Orbital Beacon, required for orbital trading. You can only sell goods to orbital traders if they're near an orbital trade beacon. Can be placed indoors.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <passability>Impassable</passability>
+    <fillPercent>0.99</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>40</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <rotatable>true</rotatable>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_ShowWallMountedTradeBeaconRadius</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedCommsConsole</defName>
+    <label>wall mounted comms console</label>
+    <description>Allows radio contact with other factions and orbital traders, now wall mounted for your convenience !</description>
+    <thingClass>Building_CommsConsole</thingClass>
+    <graphicData>
+      <texPath>WallCommsConsole/WallCommsConsole</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallCommsConsole/WallCommsConsole_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>2200</WorkToBuild>
+      <Flammability>0.6</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Usable" MayRequire="Ludeon.RimWorld.Biotech">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Summon diabolus threat</useLabel>
+        <useDuration>900</useDuration>
+        <floatMenuOptionPriority>SummonThreat</floatMenuOptionPriority>
+        <floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
+        <ignoreOtherReservations>true</ignoreOtherReservations>
+      </li>
+      <li Class="CompProperties_Useable_CallBossgroup" MayRequire="Ludeon.RimWorld.Biotech">
+        <bossgroupDef>Diabolus</bossgroupDef>
+        <spawnLetterLabelKey>LetterLabelCommsConsoleSpawned</spawnLetterLabelKey>
+        <spawnLetterTextKey>LetterCommsConsoleSpawned</spawnLetterTextKey>
+        <effecterDef>CommsConsoleBossgroupSummoned</effecterDef>
+        <delayTicks>120</delayTicks>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType>    <!-- used by call bossgroup -->
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedGroundPenetratingScanner</defName>
+    <label>wall mounted ground-penetrating scanner</label>
+    <description>A sensor unit used by researchers to search for buried resources. The chance to find a resource depends on the operator's research ability. It consumes a lot of electricity. If you find a buried resource, you'll need to use deep drills to extract it. It doesn't work under a roof, now wall mounted for your convenience !</description>
+    <graphicData>
+      <texPath>WallGroundScanner/WallGroundScanner</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallGroundScanner/WallGroundScanner_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellIconReverse>true</interactionCellIconReverse>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_ScannerMineralsDeep">
+        <scanSpeedStat>ResearchSpeed</scanSpeedStat>
+        <scanFindMtbDays>3</scanFindMtbDays>
+        <scanFindGuaranteedDays>6</scanFindGuaranteedDays>
+        <soundWorking>ScannerGroundPenetrating_Ambience</soundWorking>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>GroundPenetratingScanner</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedLongRangeMineralScanner</defName>
+    <label>wall mounted long-range mineral scanner</label>
+    <description>A lateral sensor unit used by researchers to detect a specific type of mineral across the planet. The chance to find a resource depends on the operator's research ability. This sensor can be tuned to target a specific resource type. It consumes a lot of electricity. If you find a resource, you'll need to travel to collect it, now wall mounted for your convenience !</description>
+    <graphicData>
+      <texPath>WallLongRangeMineralScanner/WallLongRangeMineralScanner</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallLongRangeMineralScanner/WallLongRangeMineralScanner_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>10000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <size>(1,1)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <costList>
+      <Steel>200</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellIconReverse>true</interactionCellIconReverse>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_LongRangeMineralScanner">
+        <scanSpeedStat>ResearchSpeed</scanSpeedStat>
+        <scanFindMtbDays>4</scanFindMtbDays>
+        <scanFindGuaranteedDays>8</scanFindGuaranteedDays>
+        <soundWorking>ScannerLongRangeMineral_Ambience</soundWorking>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>LongRangeMineralScanner</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+  </ThingDef>
+
+  <ThingDef ParentName="WallBuildingBase">
+    <defName>WallMountedMultiAnalyzer</defName>
+    <label>wall mounted multi analyzer</label>
+    <graphicData>
+      <texPath>WallMultiAnalyzer/WallMultiAnalyzer</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallMultiAnalyzer/WallMultiAnalyzer_UI</uiIconPath>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <description>Increases research speed when placed near hi-tech research bench and unlocks new research projects. Each research bench can only use one multi-analyzer, now wall mounted for your convenience.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <passability>Impassable</passability>
+    <fillPercent>0.99</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <costList>
+      <Steel>40</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>20</Gold>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+      <isEdifice>false</isEdifice>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>0.1</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <designationCategory>Misc</designationCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <rotatable>true</rotatable>
+    <placeWorkers>
+      <li>WallStuff.PlaceWorker_ShowWallMountedTradeBeaconRadius</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

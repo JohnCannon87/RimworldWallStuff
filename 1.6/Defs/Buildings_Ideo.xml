@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+<ThingDef MayRequire="Ludeon.RimWorld.Ideology" ParentName="WallBuildingBase">
+    <defName>WallMountedNeuralSupercharger</defName>
+    <label>wall mounted neural supercharger</label>
+    <description>A neuron-sensitizing device that can deliver one neural supercharge each day. A person with a neural supercharge will think and learn faster, but will also consume more food. The effect wears off in one day. Neural superchargers consume a lot of electricity, wall mounted using expanding wall anchors, functional !</description>
+    <graphicData>
+      <texPath>WallNeuralSuperCharger/WallNeuralSuperCharger</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallNeuralSuperCharger/WallNeuralSuperCharger_UI</uiIconPath>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <designationCategory>Ideology</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.3</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>NeuralSupercharger</li>
+    </researchPrerequisites>
+    <placeWorkers>      
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <building>
+      <paintable>true</paintable>
+      <isEdifice>false</isEdifice>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>400</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_NeuralSupercharger">
+        <jobString>Get neural supercharge</jobString>
+        <ticksToRecharge>60000</ticksToRecharge>
+        <effectCharged>WallMountedNeuralSuperchargerCharged</effectCharged>
+        <chargedSoundDef>NeuralSupercharger_Ready</chargedSoundDef>
+      </li>
+    </comps>
+    <clearBuildingArea>false</clearBuildingArea>
+  </ThingDef>
+
+  <EffecterDef>
+    <defName>WallMountedNeuralSuperchargerCharged</defName>
+    <children>
+    </children>
+  </EffecterDef>
+
+<ThingDef MayRequire="Ludeon.RimWorld.Ideology" ParentName="WallBuildingBase">
+    <defName>WallMountableSleepAccelerator</defName>
+    <label>wall mounted sleep accelerator</label>
+    <description>A bedside device that accelerates the sleeper's circadian rhythm. This speeds up sleep, but consumes a lot of electricity and also causes increased hunger. It must be placed directly adjacent to and facing the head of the bed. Placing more than one sleep accelerator near the same bed has no effect, wall mounted by command strips, convenient !</description>
+    <graphicData>
+      <texPath>WallSleepAccelerator/WallSleepAccelerator</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <uiIconPath>WallSleepAccelerator/WallSleepAccelerator_UI</uiIconPath>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <designationCategory>Ideology</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <passability>PassThroughOnly</passability>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.3</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    <placeWorkers>      
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>WallStuff.PlaceWorker_WallObject</li>
+      <li>WallStuff.PlaceWorker_WallChecker</li>
+    </placeWorkers>
+    <building>
+      <paintable>true</paintable>
+      <isEdifice>false</isEdifice>
+    </building>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_FacilityInUse">
+        <inUsePowerConsumption>400</inUsePowerConsumption>
+        <effectInUse>SleepAcceleratorActive</effectInUse>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <BedRestEffectiveness>0.35</BedRestEffectiveness>
+          <BedHungerRateFactor>0.20</BedHungerRateFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+        <mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+        <mustBePlacedAdjacentCardinalToAndFacingBedHead>true</mustBePlacedAdjacentCardinalToAndFacingBedHead>
+      </li>
+    </comps>
+    <clearBuildingArea>false</clearBuildingArea>
+  </ThingDef>
+
+</Defs>

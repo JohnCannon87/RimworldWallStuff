@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- Check if a specific mod is loaded, using the Mod ID -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+          <li>Universal Trade Hub</li>
+      </mods>
+    <!-- If the mod is loaded, apply the following patch -->
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <ThingDef ParentName="WallBuildingBase">
+                <defName>WallMountedUniversalTradingTerminal</defName>
+                <label>wall mounted universal trading terminal</label>
+                <description>A sleek, branded console, meticulously calibrated to connect with a vast network of interstellar traders. This highly advanced device allows you to order items from any corner of the galaxy, right from your base. Constructing it requires advanced components and a skilled builder, now wall mounted for your convenience !</description>
+                <thingClass>Universal_Trade_Hub.Building_UniversalTradeConsole</thingClass>
+                <graphicData>
+                <texPath>WallUniversalTradeTerminal/WallUniversalTradeTerminal</texPath>
+                <graphicClass>Graphic_Multi</graphicClass>
+                </graphicData>
+                <uiIconPath>WallUniversalTradeTerminal/WallUniversalTradeTerminal_UI</uiIconPath>
+                <altitudeLayer>BuildingBelowTop</altitudeLayer>
+                <passability>PassThroughOnly</passability>
+                <minifiedDef>MinifiedThing</minifiedDef>
+                <thingCategories>
+                <li>BuildingsMisc</li>
+                </thingCategories>
+                <pathCost>50</pathCost>
+                <blockWind>true</blockWind>
+                <castEdgeShadows>false</castEdgeShadows>
+                <fillPercent>0.5</fillPercent>
+                <canOverlapZones>false</canOverlapZones>
+                    <statBases>
+                        <MaxHitPoints>200</MaxHitPoints>
+                        <WorkToBuild>2200</WorkToBuild>
+                        <Flammability>0.3</Flammability>
+                        <Mass>20</Mass>
+                    </statBases>
+                <size>(1,1)</size>
+                <building>
+                        <joyKind>Social</joyKind>
+                <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+                <isEdifice>false</isEdifice>
+                </building>
+                    <costList>
+                        <Steel>80</Steel>
+                        <ComponentIndustrial>6</ComponentIndustrial>
+                        <ComponentSpacer>3</ComponentSpacer>
+                    </costList>
+                <defaultPlacingRot>South</defaultPlacingRot>
+                <interactionCellOffset>(0,0,1)</interactionCellOffset>
+                <hasInteractionCell>true</hasInteractionCell>
+                <designationCategory>Misc</designationCategory>
+                <clearBuildingArea>false</clearBuildingArea>
+                <comps>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <shortCircuitInRain>true</shortCircuitInRain>
+                            <basePowerConsumption>400</basePowerConsumption>
+                        </li>
+                        <li Class="CompProperties_Flickable" />
+                        <li Class="CompProperties_Breakdownable" />
+                </comps>
+                <placeWorkers>
+                <li>WallStuff.PlaceWorker_WallObject</li>
+                <li>WallStuff.PlaceWorker_WallChecker</li>
+                <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+                </placeWorkers>
+                <researchPrerequisites>
+                <li>MicroelectronicsBasics</li>
+                </researchPrerequisites>
+                    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+            </ThingDef>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
