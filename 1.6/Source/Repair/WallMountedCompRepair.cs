@@ -53,6 +53,11 @@ namespace WallStuff
 
         public override void CompTickRare()
         {
+            if (parent.Map == null || parent.MapHeld == null || parent.Spawned == false)
+            {
+                return; // Don't tick while minified or unspawned
+            }
+
             SetStatus();
 
             this.ticksSinceMacroTick = this.ticksSinceMacroTick + 250;
@@ -66,6 +71,11 @@ namespace WallStuff
 
         private void SetStatus()
         {
+            if (parent.Map == null || !parent.Spawned)
+            {
+                return;
+            }
+
             if (RoomFacing().UsesOutdoorTemperature)
             {
                 this.parent.TryGetComp<CompPowerTrader>().PowerOutput = 0f;
