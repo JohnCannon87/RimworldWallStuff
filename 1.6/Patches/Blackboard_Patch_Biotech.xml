@@ -9,16 +9,25 @@
             <operations>
                 <li Class="PatchOperationAdd">
                     <success>Always</success>
-                    <xpath>*/ThingDef[defName = "SchoolDesk"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+                    <xpath>Defs/ThingDef[defName = "SchoolDesk"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
                     <value>
                         <li>WallMountedBlackboard</li>
                     </value>
                 </li>
                 <li Class="PatchOperationAdd">
                     <success>Always</success>
-                    <xpath>*/ThingDef[defName = "SchoolDesk"]/descriptionHyperlinks</xpath>
+                    <xpath>Defs/ThingDef[defName = "SchoolDesk"]/descriptionHyperlinks</xpath>
                     <value>
                         <ThingDef>WallMountedBlackboard</ThingDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="WallMountedBlackboard"]/comps/li[@Class="CompProperties_Facility"]</xpath>
+                    <value>
+                        <statOffsets>
+                            <VEF_BuildingLearningRateOffset>0.2</VEF_BuildingLearningRateOffset>
+                        </statOffsets>
                     </value>
                 </li>
             </operations>
