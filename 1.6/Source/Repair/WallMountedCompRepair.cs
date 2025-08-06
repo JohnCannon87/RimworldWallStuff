@@ -115,6 +115,27 @@ namespace WallStuff
                     RepairPawnEquipment(pawn);
                     RepairPawnApparel(pawn);
                 }
+
+                //If it's an outfit stand get all the things on the stand
+                if ((thing.def.defName == "Building_OutfitStand" || thing.def.defName == "Building_KidOutfitStand") && thing is ThingWithComps maybeStand)
+                {
+                    // Try to access its inner container via reflection for compatibility
+                    var heldItemsProp = maybeStand.GetType().GetProperty("HeldItems");
+                    if (heldItemsProp != null)
+                    {
+                        var heldItems = heldItemsProp.GetValue(maybeStand) as IEnumerable<Thing>;
+                        if (heldItems != null)
+                        {
+                            foreach (Thing heldThing in heldItems)
+                            {
+                                if (heldThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) || heldThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel))
+                                {
+                                    RepairThing(heldThing);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 

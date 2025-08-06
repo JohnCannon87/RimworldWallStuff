@@ -65,6 +65,7 @@
 					<li>WallStuff.PlaceWorker_WallObject</li>
 					<li>WallStuff.PlaceWorker_WallChecker</li>
 				</placeWorkers>
+        		<altitudeLayer>BuildingBelowTop</altitudeLayer>
 				<clearBuildingArea>false</clearBuildingArea>
 			</ThingDef>
           </value>
