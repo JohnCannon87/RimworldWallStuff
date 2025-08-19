@@ -219,6 +219,7 @@
         <building>
             <canPlaceOverWall>true</canPlaceOverWall>
             <isEdifice>false</isEdifice>
+            <canExchangeVacuum>true</canExchangeVacuum>
         </building>
         <designationCategory>Temperature</designationCategory>
         <clearBuildingArea>false</clearBuildingArea>
